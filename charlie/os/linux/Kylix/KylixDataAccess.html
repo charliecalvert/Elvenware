@@ -1,0 +1,380 @@
+<HTML>
+<HEAD>
+<TITLE>Data Access</TITLE>
+<script language="JavaScript" src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+<!--#include virtual="../../scripts/HeaderInfo.html" -->
+</HEAD>
+<BODY>
+
+<h2>Data Access </h2>
+<UL>
+<LI>DataCLX  </LI>
+<LI>dbExpress </LI>
+<LI>MIDAS </LI>
+</UL>
+
+<h2>ADOExpress Architecture (for Review) </h2>
+
+<IMG SRC="../images/DBArch1.gif" width="631" height="470">
+<h2>MIDAS Architecture � Today (For Review)   </h2>
+
+<IMG SRC="../images/DBArch2.gif" width="695" height="531">
+<h2>DataCLX Architecture </h2>
+
+<IMG SRC="../images/DBArch4.gif" width="642" height="490">
+
+<h2>DataCLX Architecture </h2>
+<li>Core DB classes. </li>
+<LI>TDataset, TField, TDataSource � </LI>
+<LI>New TUniDataSet. </LI>
+<LI>Uni-directional, read only dataset. </LI>
+<LI>Use with provider and TClientDataSet for full featured database app. </LI>
+<LI>DataCLX Architecture </LI>
+
+<h2>TSQLDataSet </h2>
+<ul>
+<LI>TUniDataSet descendant </LI>
+<ul>
+<LI>Connects new DB drivers with CLX </LI>
+<LI>For executing SQL statements or calling SPs </LI>
+ </ul>
+<LI>TSQLConnection </LI>
+<ul>
+<LI>TCustomConnection descendant </LI>
+<LI>Similar to TDatabase or TADOConnection� </LI>
+</ul>
+<LI>TSQLCLientDataset  </LI>
+<ul>
+<LI>"Super" component for convenient visual browsing and editing of data through data-aware controls </LI>
+</ul>
+</ul>
+
+<h2>DataCLX Architecutre </h2>
+<UL>
+<LI>Core Midas classes. </LI>
+<LI>Now in PRO SKU for Linux and windows VCL. </LI>
+<LI>TClientDataSet, TDataSetProvider � </LI>
+<LI>Connection components in Enterprise SKU. </LI>
+<LI>New SOAP-based connection component for Linux. </LI>
+</UL>
+
+<h2>DataCLX Components </h2>
+<UL>
+<LI>TCustomConnection </LI>
+<LI>TSQLConnection </LI>
+<LI>TDataSet </LI>
+<LI>TCustomSQLDataSet </LI>
+<LI>TSQLDataSet </LI>
+<LI>TSQLQuery </LI>
+<LI>TSQLStoredProc </LI>
+<LI>TSQLTable </LI>
+<LI>TCustomClientDataSet </LI>
+<LI>TCustomLocalDataset </LI>
+<LI>TSQLClientDataSet </LI>
+<LI>(TADOClientDataSet) </LI>
+<LI>(TBDEClientDataSet) </LI>
+<LI>TSQLMonitor </LI>
+</UL>
+
+<h2>TSQLConnection </h2>
+<UL>
+<LI>Descends from TCustomConnection </LI>
+<LI>Uses dbxdrivers to default connection properties </LI>
+<LI>Reads dbxconnections for connection names (Call GetConnectionRegistryFile from IniFiles.pas)</LI>
+<LI>Uses dbExpress SQLDriver and SQLConnection </LI>
+<LI>Used by TSQLMonitor </LI>
+</UL>
+
+<h2>TCustomSQLDataSet </h2>
+<UL>
+<LI>Command / Statement component </LI>
+<LI>Cursor </LI>
+<LI>SQLConnection </LI>
+</UL>
+
+<h2>TSQLDataSet </h2>
+<UL>
+<LI>Descends from TCustomSQLDataset </LI>
+<LI>Use it for: </LI>
+<LI>Queries (Select) </LI>
+<LI>Commands </LI>
+<LI>Insert </LI>
+<LI>Update </LI>
+<LI>Delete </LI>
+<LI>Alter </LI>
+<LI>Stored Procedures </LI>
+</UL>
+
+<h2>TSQLDataSet </h2>
+<UL>
+<LI>Published Properties  </LI>
+<UL>
+<LI>CommandType </LI>
+<LI>CommandText </LI>
+<LI>MaxBlobSize </LI>
+<LI>DataSource </LI>
+<LI>ParamCheck </LI>
+<LI>Params </LI>
+<LI>SortFieldNames </LI>
+</UL>
+<LI>Public Methods </LI>
+<UL>
+<LI>ExecSQL </LI>
+</UL>
+</UL>
+
+<h2>TSQLQuery </h2>
+<UL>
+<LI>Descends from TCustomSQLDataset </LI>
+<LI>Compatibility component for TQuery </LI>
+<LI>Sets CommandType = ctQuery </LI>
+<LI>Public Property </LI>
+<UL>
+<LI>RowsAffected </LI>
+</UL>
+<LI>Published Properties </LI>
+<UL>
+<LI>DataSource </LI>
+<LI>MaxBlobSize </LI>
+<LI>ParamCheck </LI>
+<LI>Params </LI>
+<LI>SQL </LI>
+</UL>
+</UL>
+
+<h2>TSQLQuery </h2>
+<UL>
+<LI>Public Methods </LI>
+<UL>
+<LI>ExecSQL (override) </LI>
+<LI>PrepareStatement (override) </LI>
+</UL>
+</UL>
+
+<h2>TSQLStoredProc </h2>
+<UL>
+<LI>Descends from TCustomSQLDataset </LI>
+<LI>Compatibility component for TStoredProc </LI>
+<LI>CommandType = ctStoredProc </LI>
+<LI>Published Properties </LI>
+<UL>
+<LI>MaxBlobSize </LI>
+<LI>ParamCheck </LI>
+<LI>Params </LI>
+<LI>StoredProcName </LI>
+</UL>
+<LI>Public Methods </LI>
+<UL>
+<LI>ExecProc </LI>
+<LI>NextRecordSet </LI>
+<LI>PrepareStatement </LI>
+</UL>
+</UL>
+                 
+<h2>TSQLTable </h2>
+<UL>
+<LI>Descends from TCustomSQLDataset </LI>
+<LI>Not recommended for SQL table access </LI>
+<LI>Compatibility component for TTable </LI>
+<LI>CommandType = ctTable </LI>
+<LI>Public Properties </LI>
+<UL>
+<LI>IndexFields </LI>
+<LI>IndexFieldCount </LI>
+</UL>
+</UL>
+
+<h2>TSQLTable </h2>
+<UL>
+<LI>Published Properties </LI>
+<UL>
+<LI>Active </LI>
+<LI>IndexFieldNames </LI>
+<LI>IndexName </LI>
+<LI>MasterFields </LI>
+<LI>MasterSource </LI>
+<LI>MaxBlobSize </LI>
+<LI>TableName </LI>
+<LI>Public Methods </LI>
+<LI>DeleteRecords </LI>
+<LI>GetIndexNames </LI>
+<LI>PrepareStatement (override) </LI>
+</UL>
+</UL>
+
+<h2>TSQLClientDataSet </h2>
+<UL>
+<LI>"Super" component </LI>
+<LI>For data editing and browsing </LI>
+<LI>Combines TSQLDataSet, TClientDataset and TDataSetProvider </LI>
+<LI>Reduces component dropping </LI>
+</UL>
+
+<h2>TSQLMonitor </h2>
+<UL>
+<LI>Uses TSQLConnection to monitor SQL on the database server </LI>
+<LI>Multiple log files can be used </LI>
+<LI>TSQLTraceFlag = (traceUNKNOWN, traceQPREPARE, traceQEXECUTE, traceERROR, traceSTMT, traceCONNECT, traceTRANSACT, traceBLOB, traceMISC, traceVENDOR, traceDATAIN, traceDATAOUT); </LI>
+</UL>
+
+<h2>TSQLMonitor </h2>
+<UL>
+<LI>Public Properties </LI>
+<UL>
+<LI>TraceCount </LI>
+<LI>TraceFlags </LI>
+</UL>
+<LI>Published </LI>
+<UL>
+<LI>Active </LI>
+<LI>AutoSave </LI>
+<LI>FileName </LI>
+<LI>TraceList </LI>
+<LI>SQLConnection </LI>
+<LI>Events </LI>
+<LI>OnLogTrace </LI>
+<LI>OnTrace </LI>
+</UL>
+</UL>
+
+<h2>TSQLMonitor </h2>
+<UL>
+<LI>Public Methods </LI>
+<UL>
+<LI>LoadFromFile </LI>
+<LI>SaveToFile </LI>
+</UL>
+</UL>
+
+<h2>dbExpress - Database Architecture </h2>
+<UL>
+<LI>Thin, fast, native drivers for relational dbs  </LI>
+<LI>Surface DBMS vendor features through common interface </LI>
+<LI>Simple interface - cursors </LI>
+<LI>uni-directional </LI>
+<LI>Read-only </LI>
+<LI>Data caching implemented in CLX layers above (TClientDataSet) </LI>
+<LI>Simple to replace and add drivers </LI>
+<LI>Simple configuration (ini files, CLX properties) </LI>
+<LI>Updates through Midas resolver </LI>
+</UL>
+
+<h2>dbExpress - Database Architecture (Drivers) </h2>
+<UL>
+<LI>Metadata interfaces layered on basic interfaces  </LI>
+<LI>Interfaces � similar to JDBC and ODBC </LI>
+<LI>SQLDriver </LI>
+<LI>SQLConnection </LI>
+<LI>SQLCommand </LI>
+<LI>SQLCursor </LI>
+<LI>SQLMetaData </LI>
+<LI>Written in C++ for immediate portability </LI>
+<LI>Runs on Solaris </LI>
+<LI>Runs on Windows </LI>
+<LI>Runs on Linux </LI>
+</UL>
+
+<h2>dbExpress </h2>
+<UL>
+<LI>Provides a thin, fast data access layer that addresses the following issues we have with the BDE: </LI>
+<LI>Complexity </LI>
+<LI>BDE configuration </LI>
+<LI>Deployment </LI>
+<LI>Run time overhead </LI>
+<LI>Caching </LI>
+<LI>Metadata or schema cache </LI>
+<LI>Bdecfg </LI>
+<LI>Improved performance </LI>
+<LI>No internal query generation </LI>
+<LI>Minimal or no runtime metadata retrieval </LI>
+</UL>
+
+<h2>dbExpress Enhancements </h2>
+<UL>
+<LI>Support for Multiple Transactions </LI>
+<LI>Linkable into applications </LI>
+<LI>Full Interbase 6 feature support </LI>
+<LI>SQL Dialects </LI>
+<LI>Rollback retaining </LI>
+<LI>New data types (Int64, Date, Time, TimeStamp) </LI>
+<LI>Multiple transactions </LI>
+<LI>Microsoft SQL Server 2000? </LI>
+</UL>
+
+<h2>How it differs from BDE/SQLLinks: </h2>
+<UL>
+
+<LI>No concept of TTable at the driver level: Most database intensive 
+applications use queries or stored procedures to get to the data.  Opening 
+table on the client not only consumes client resources but also locks up 
+server resources when there is no filtering on the underlying table.  
+Instead, use TSQLClientDataSet in dataCLX </LI> 
+
+<LI>Unidirectional result set: Since ClientDataset provides a layer for 
+caching and scrolling on a result set, the data-access layer was designed 
+to return a forward only cursor.  </LI> 
+
+<LI>How it differs </LI>
+<UL>
+
+<LI>No caching of design time metadata: No schema cache as we did in BDE.  
+When you open a table or execute a query through BDE we have 3 copies of 
+the metadata in memory: one at the driver level, a copy in the core BDE 
+and a copy on the client.  The design time metadata access interface sits 
+on top of the core data-access interface and is loosely coupled.  </LI> 
+
+<LI>No complex BDE configuration. Database specific properties will be 
+surfaced as set/get Properties.  Either INI files or component properties 
+configure database access.  </LI> 
+
+</UL>
+<LI>How it differs </LI>
+<UL>
+<LI>Optimized data-access: No internal query generation. Execute queries when requested by the user. </LI>
+<LI>No concept of pseudoblobs ( CHAR or VARCHAR > 255 ). Treat them as scalar fields. </LI>
+<LI>Eliminate the use of PHYSICAL and LOGICAL field types. Clients see only the logical data types. </LI>
+</UL>
+</UL>
+
+<h2>How it differs </h2>
+<UL>
+<LI>No BCD ENABLE/DISABLED setting, DECIMAL and NUMERIC data types will always be reported as fldBCD. </LI>
+<LI>Manage record buffer internally. Clients get individual field values only. </LI>
+<LI>Less error prone </LI>
+</UL>
+
+<h2>How it differs </h2>
+<UL>
+<LI>No concept of live queries, cached updates. MIDAS provides all this. </LI>
+<LI>No Schema creation support or Batchmove </LI>
+<LI>Same interface for Query and Stored Procedure processing. </LI>
+<LI>Extensible C++ interface rather than a C API. </LI>
+</UL>
+
+<h2>dbExpress base classes: </h2>
+<UL>
+<LI>SQLDriver </LI>
+<LI>SQLConnection </LI>
+<LI>SQLCommand </LI>
+<LI>SQLCursor </LI>
+<LI>SQLMetadata </LI>
+</UL>
+
+<h2>Not in Kylix 1.0 DataCLX </h2>
+<UL>
+<LI>BDE </LI>
+<LI>SQL Explorer (later) </LI>
+<LI>Midas connection components based on IDispatch </LI>
+<LI>ADO (ever?) </LI>
+<LI>Data Dictionary </LI>
+<LI>Decision Cube </LI>
+</UL>
+
+<h2>DEMO </h2>
+<UL>
+<LI>dbExplorer </LI>
+<LI>Same code on Linux and Windows </LI>
+</UL>
+
+</BODY>
+</HTML>

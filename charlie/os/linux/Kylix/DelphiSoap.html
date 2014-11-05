@@ -1,0 +1,267 @@
+<html>
+<head>
+  <title>SOAP with Delphi</title>
+  <link rel="stylesheet" type="text/css" HREF="../../../libs/css/sams.css">
+  <script language="JavaScript" src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+  <!--#include virtual="../../scripts/HeaderInfo.html" -->
+</head>
+<body>
+
+<div = id="main">
+<h1>Using SOAP with Delphi</h1>
+
+<p>Charlie Calvert and John Kaster</p>
+
+<h2>SOAP Definition </h2>
+<ul>
+  <li>Simple Object Access Protocol </li>
+  <li>SOAP provides a simple and lightweight mechanism for exchanging structured 
+  and typed information between peers in a decentralized, distributed environment 
+  using XML </li>
+</ul>
+
+<h2>SOAP Specification </h2>
+<ul>
+  <li>SOAP Specification on http://www.w3.org/TR/SOAP/ </li>
+  <li>XML Specification at http://www.w3.org/TR/REC-xml  </li>
+</ul>
+
+<h2>SOAP Design Goals </h2>
+<ul>
+  <li>Lightweight </li>
+  <li>Simple </li>
+  <li>Extensible </li>
+  <li>Not in the SOAP specification: </li>
+  <li>Distributed garbage collection </li>
+  <li>Batching of messages </li>
+  <li>Objects-by-reference (requires GC) </li>
+  <li>Activation </li>
+</ul>
+
+<h2>SOAP Messages </h2>
+<ul>
+  <li>All SOAP messages are encoded in XML </li>
+  <li>SOAP Envelope Specification is at http://schemas.xmlsoap.org/soap/envelope/ </li>
+  <li>Parts of a SOAP message </li>
+  <li>Envelope </li>
+  <li>Header </li>
+  <li>Body </li>
+</ul>
+
+<h2>SOAP Message Envelope </h2>
+<ul>
+  <li>Required </li>
+  <li>may contain namespaces </li>
+  <li>may have version information </li>
+</ul>
+
+<h2>SOAP Message Header </h2>
+<ul>
+  <li>Optional </li>
+  <li>immediately follows envelope </li>
+  <li>may contain namespaces </li>
+</ul>
+
+<h2>SOAP Message Body </h2>
+<ul>
+  <li>Immediately follows either envelope or header </li>
+  <li>May contain namespaces </li>
+</ul>
+
+<h2>SOAP Message Exchange Model </h2>
+<ul>
+  <li>By default, uses HTTP as its transport </li>
+  <li>Dynamic discovery of SOAP server properties </li>
+  <li>Types of messages </li>
+  <li>One-way </li>
+  <li>Request/response </li>
+  <li>Multicast </li>
+</ul>
+
+<h2>SOAP Message Path </h2>
+<ul>
+  <li>SOAP Application </li>
+  <li>Identify all messages for this application </li>
+  <li>Verify mandatory parts and process them. If missing, discard the message </li>
+  <li>Remove all processed parts from the message and pass it on if needed </li>
+</ul>
+
+<h2>SOAP Fault </h2>
+<ul>
+  <li>A SOAP Fault contains four items </li>
+  <li>faulterror, the error number </li>
+  <li>faultstring, human readable error </li>
+  <li>faultactor, who caused the error </li>
+  <li>detail, used if the error is caused by the body element </li>
+</ul>
+
+<h2>SOAP Encoding </h2>
+<ul>
+  <li>Specification at http://schemas.xmlsoap.org/soap/encoding/ </li>
+  <li>Simple types </li>
+  <li>Int, float, negativeInteger, string </li>
+  <li>Can be used directly in element schemas </li>
+  <li>Enumerations </li>
+  <li>Array of bytes </li>
+  <li>Polymorphic accessor (uses xsi:type), like "xsd:float" </li>
+  <li>Compound types </li>
+  <li>Struct </li>
+  <li>Arrays (including partially transmitted and sparse) </li>
+</ul>
+
+<h2>SOAP in Delphi and Kylix </h2>
+<ul>
+  <li>Delphi's SOAP implementation is built on new basic Delphi technologies that 
+  have nothing to do with SOAP </li>
+  <li>Interface RTTI </li>
+  <li>A generic dynamic invocation service </li>
+  <li>With these two underlying technologies, an IIOP version or a customwire 
+  protocol could also be built. </li>
+</ul>
+
+<h2>Interface RTTI </h2>
+<ul>
+  <li>IInvokable is an RTTI interface object (uses {$M+}) </li>
+  <li>To make something remotable, descend from IInvokable </li>
+  <li>Anything that descends from IInvokable is remotable </li>
+</ul>
+
+<h2>Dynamic invocation service </h2>
+<li>Accepts the RTTI and the data for a specific call  </li>
+<li>Invokes a native Delphi implementation (run-time compilation) </li>
+<li>Interprets the result </li>
+
+
+<h2>SOAP in Delphi and Kylix </h2>
+<ul>
+  <li>Early binding </li>
+  <li>Late binding </li>
+  <li>Transport independent </li>
+  <li>Class-based support </li>
+  <li>Remote Interface Object </li>
+  <li>Dispatcher </li>
+  <li>Invoker </li>
+  <li>Resolver </li>
+</ul>
+
+<h2>SOAP communication process </h2>
+<ul>
+  <li>A SOAP client sends a message to the server </li>
+  <li>A SOAP server receives the message </li>
+  <li>It parses the message, extracting the calls and values specified in the 
+  envelope </li>
+  <li>The calls and parameter values are converted to native Delphi method 
+  pointers and values </li>
+  <li>The Delphi code is called </li>
+  <li>The response is converted back into an XML response envelope </li>
+  <li>The message is sent to the client </li>
+  <li>The client receives the response </li>
+  <li>The response is converted back to the native Delphi result/out/var params </li>
+</ul>
+
+<h2>SOAP communication example </h2>
+<ul>
+  <li>A SOAP client sends a message to the server </li>
+  <li>The SOAP IConvert implementation creates the XML message from Delphi code </li>
+  <li>The SOAP ITransport implementation sends the message </li>
+</ul>
+
+<h2>SOAP communication example </h2>
+<ul>
+  <li>A SOAP server receives the message </li>
+  <li>The SOAP ITransport implementation receives the message </li>
+  <li>The SOAP IConvert implementation converts the XML message to native Delphi 
+  calls </li>
+  <li>The Native Delphi code is called through the dynamic compilation of the SOAP 
+  request using IInvoker </li>
+  <li>The result is converted back to an XML message by IConvert </li>
+  <li>The response is sent back to the client by ITransport </li>
+</ul>
+
+<h2>Points to ponder </h2>
+<ul>
+  <li>IInvoker is independent of the transport and converter </li>
+  <li>All IInvoker descendants are automatically remotable </li>
+  <li>All you need to do is create and implement the interface </li>
+  <li>Almost anything that contains RTTI can be remoted (i.e., component 
+  properties) </li>
+  <li>For IConvert, </li>
+  <li>You can create an IConvert implementation for any "package" format </li>
+  <li>You can descend from and extend the existing SOAP implementation </li>
+</ul>
+
+<h2>For ITransport, </h2>
+<ul>
+  <li>An ITransport implementation can be created for any type of transport, such 
+  as message queues and email </li>
+  <li>You can extend the existing SOAP ITransport implementation to support 
+  features like encryption, security, and/or compression </li>
+</ul>
+
+<h2>SOAP Example </h2>
+<ul>
+  <li>"Black Adder" </li>
+  <li>Simple interface to add numbers together and pass the result back to the 
+  client </li>
+  <li>Building the SOAP server </li>
+  <li>Building a late-bound (dynamic) SOAP client </li>
+  <li>Building an early-bound (static) SOAP client </li>
+</ul>
+
+<h2>Building a SOAP server </h2>
+<ul>
+  <li>Uses InvRg, which enables classes to be published as SOAP servers </li>
+  <li>similar to including ComServ in an application </li>
+  <li>Adding logic to IInvokable with the IAdder descendent  </li>
+  <li>Notice the Interface RTTI flag </li>
+  <li>Simple calls to register the implementation </li>
+</ul>
+
+<h2>Building a late-bound (dynamic) SOAP client </h2>
+<ul>
+  <li>Using the new portable variant type </li>
+  <li>Create the client interface using an HTTP client </li>
+  <li>Dynamic discovery of SOAP server capabilities </li>
+  <li>Allows server implementation to change at any time </li>
+  <li>No syntax compilation errors </li>
+  <li>No code insight is available </li>
+  <li>Error conditions only surface at run time </li>
+  <li>Use the new Test server to examine the HTTP communication among SOAP servers 
+  and clients </li>
+</ul>
+
+<h2>Building an early-bound (static) SOAP client </h2>
+<ul>
+  <li>Import the SOAP server interface (like importing a type library) </li>
+  <li>Code completion now works </li>
+  <li>Compile-time syntax checking </li>
+</ul>
+
+<h2>Exception Handling </h2>
+<ul>
+  <li>Delphi exceptions can also be registered on the client and server so 
+  specific exceptions can be re-thrown on client  </li>
+  <li>If no specific exception is registered, a generic soapfault exception is 
+  thrown </li>
+</ul>
+
+<h2>Additional SOAP resources </h2>
+<ul>
+  <li>http://www.develop.com/soap/ </li>
+  <li>http://www.oasis-open.org/cover/soap.html </li>
+  <li>http://www-4.ibm.com/software/developer/ library/soap/soapv11.html </li>
+  <li>http://www.microsoft.com/mind/0100/ soap/soap.asp </li>
+  <li>http://www.xmlmag.com/upload/free/ features/xml/2000/04fal00/kb0004/ kb0004.asp 
+  </li>
+</ul>
+
+<h2>Future possibilities </h2>
+<ul>
+  <li>Distributed components </li>
+  <li>Test applications from SOAP packets </li>
+  <li>Integration with JBuilder and AppServer </li>
+</ul>
+</div>
+</body>
+</html>
+

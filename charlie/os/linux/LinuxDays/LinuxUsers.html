@@ -1,0 +1,521 @@
+<html>
+
+<head>
+<title>Linux Users</title>
+<meta content="Charlie Calvert" name="AUTHOR">
+<script src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>
+<!--#include virtual="/charlie/libs/scripts/HeaderInfo.html" -->
+</head>
+
+<body>
+
+<h1>Users</h1>
+<h4>Index</h4>
+<ul>
+	<li><a href="#chmod">chmod</a></li>
+	<li><a href="#chown">chown</a></li>
+</ul>
+<h2>Creating and Maintaining User Accounts</h2>
+
+<p>There is a lot to be said on the topic of users and Linux, and the various rights 
+they can be granted. I will approach this topic on some depth in the section on 
+Setting Up User Rights. For now, however, I want to cover a few basic concepts.</p>
+<h2>The root User and All the other Users</h2>
+
+<p>In Windows, and particularly in Windows 98, there is not a big distinction between 
+any one user on the system and any other user. In general, any user is free to explore 
+the entire disk, and any user can modify any file on the system. This is not the 
+case in Linux.</p>
+
+<p>In Linux, there is one user, called the <b>root</b> user, who is the administrator, 
+and who can do anything he or she wants. All other users have restricted access 
+to the OS.</p>
+<h3>Using su to become root</h3>
+
+<p>If you want to perform an administrative task having to do with maintaining the 
+OS, then you should sign on to the system as <b>root</b>. If you want write programs, 
+create documents, answer email, browse the web, or play games, then you should sign 
+on as a regular user.</p>
+
+<p>If you sign on as a regular user, you can become root by using the SuperUser 
+comand: su.</p>
+
+<p class="code">su</p>
+
+<p class="code">Password:</p>
+
+<p>If you type in the correct password, then you will become root until you type 
+the word exit. After you type exit, you will go back to the state you were in before 
+you typed su.</p>
+<h3>Using su with the -l Option to become root</h3>
+
+<p>If you type <b>su -l</b>, or <b>su --login</b>, and successfully enter the password, 
+then you will not only become root, but you will run the login scripts associated 
+with root. That means that your path, and other variables, will be the same as the 
+would be had you originally logged in as root. If you don't use the login switch, 
+then you will the rights of the super user, but the environment variables of the 
+user you were before you issued the su command.</p>
+<h3>Using su to become an Ordinary User</h3>
+
+<p>It is common in the Linux community to call the su command the superuser command. 
+However, that is really a bit of a misonomer. A better translation of the letters 
+might be switch user. The issue here is that you can use su to switch to being any 
+other user on the system whose password you know. For instance, if I am signed on 
+as ccalvert, and want to become user charlie, then I can issue the following command:</p>
+
+<p class="code">su -l charlie</p>
+
+<p>If I can provide the password for use charlie, then I will be logged on as charlie. 
+If I type the word exit, then I once again become ccalvert.</p>
+<h3>Users: I'm Just an Ordinary Guy</h3>
+
+<p>The root user can create new user, or change the rights of existing users.</p>
+<h3>The Hard Way to Manager Users</h3>
+<p>Here is how to create groups and users on Ubuntu, as of Feb 26, 2012:</p>
+<pre class="code">sudo addgroup mygroup
+sudo adduser --ingroup mygroup myuser</pre>
+<h3>Back to Older Notes</h3>
+
+<p>There are various scripts and text files that you can use in order to change 
+the rights of users. Most notably, there is:</p>
+<table border="1">
+	<tr>
+		<td>/etc/passwd</td>
+		<td>File for setting passwords</td>
+	</tr>
+	<tr>
+		<td>Shadow passwords</td>
+		<td>A safety mechanism</td>
+	</tr>
+	<tr>
+		<td>/etc/group </td>
+		<td>File for working with groups</td>
+	</tr>
+</table>
+
+<p>You can also use the commands:</p>
+<ul>
+	<li>useradd: add users</li>
+	<li>userdel</li>
+	<li>usermod</li>
+	<li>groupadd</li>
+	<li>groupdel</li>
+</ul>
+<h3>Basics of useradd and userdel</h3>
+<h4>Adding a user</h4>
+<ul>
+	<li>Become root</li>
+	<li>Issue command: useradd sammy</li>
+	<li>ls /home to see that sammy has a directory</li>
+	<li>ls -la /home/sammy to see his directory</li>
+	<li>Look at /etc/passwd and /etc/group</li>
+</ul>
+<h4>Deleting a user</h4>
+<ul>
+	<li>Now delete sammy</li>
+	<li>userdel -r sammy</li>
+	<li>ls -l /home</li>
+	<li>The -r option not only removed user from etc/passwd and etc/group/ but deleted 
+	the user's files</li>
+</ul>
+<h2>kuser to the rescue</h2>
+
+<p>In many cases, I think it is necessary to know how to edit the files in the /etc 
+directory or its subdirectories by hand. However, in this case, I think you can 
+safely ignore both of these files, and instead use an excellent utility that ships 
+with KDE called <b>kuser</b>.</p>
+
+<p>There are two ways to access <b>kuser</b>. If you are using the KDE desktop, 
+then use the panel to open the Application Starter Menu, and select System | User 
+Manager. If you are not root when you do this, then you will be told that you do 
+not have the rights to use this utility. There isn't any good reason for most people 
+ever to bring up KDE when signed on as root, so this menu item is really something 
+of a red herring. The best way to get at <b>kuser</b> is to open a terminal window, 
+su over to root, and type <b>kuser</b> at the command prompt.</p>
+
+<p>Inside the <b>kuser</b> utility you can do many wondrous things, such as add, 
+delete, and modify users and groups.</p>
+
+<p>Double click on any one user to pop up a dialog that let's you modify that user's 
+properties. This dialog, called the User Property dialog, is a great place to set 
+passwords, and decide the groups to which a user belongs.</p>
+
+<p>In the User Property dialog there are three pages. The second, called <b>Extended</b>, 
+lets you decide whether a user can change their own password, how long it will be 
+until their password expires, and what will happen when it does expire.</p>
+
+<p>The third page, called G<b>roups</b>, allows you to decide the groups to which 
+a user belongs. I find it useful to make most users a member of the <b>users</b> 
+group. This will allow you to designate certain areas on the disk where all members 
+of the users group have rights, and where they can share files, etc.</p>
+
+<p>Notice that each user and group is associated with a number. For instance, the 
+first user is usually given the number 500. For reasons that will become clear later 
+in this discussion, I suggest that you pay some attention to this number. In particular, 
+if you are setting up a network, and want to allow users to have access to various 
+computers, then I would make an effort to give them each the same number on each 
+computer. This is not a necessity, but it can make your life easier when it comes 
+time to share files and directories.</p>
+<h3><a id="chmod"></a>chmod</h3>
+`
+<ul>
+	<li>Use this command to change the rights on an individual file.</li>
+	<li>If you are not the owner of the file, then you need to be root to change 
+	the rights</li>
+</ul>
+<h3>chmod and bash file for changing directories</h3>
+<ul>
+	<li>#!/bin/bash</li>
+	<li>echo hello streets of London</li>
+	<li>Now give yourself rights to execute it:</li>
+	<li>chmod a+x gosrc</li>
+	<li>Now run the file</li>
+</ul>
+<h3>chmod and the user</h3>
+<ul>
+	<li>Create user sammy</li>
+	<li>Make ccalvert part of the group sammy</li>
+	<li>Now become ccalvert and try to read /home/sammy</li>
+	<li>You can't read it because the directory sammy gives no rights to the group 
+	sammy: rwx______</li>
+	<li>To change this, chmod g+r /home/sammy</li>
+	<li>Now you can read it, but still get an error</li>
+	<li>To fix it: chmod g+x /home/sammy</li>
+</ul>
+<table border="1" cellpadding="4" cellspacing="3" width="123">
+	<colgroup>
+		<col width="42"><col width="54">
+	</colgroup>
+	<thead>
+		<tr valign="TOP">
+			<td width="42">u</td>
+			<td width="54">User</td>
+		</tr>
+	</thead>
+	<tr valign="TOP">
+		<td width="42">g</td>
+		<td width="54">Group</td>
+	</tr>
+	<tr valign="TOP">
+		<td width="42">o</td>
+		<td width="54">Other</td>
+	</tr>
+	<tr valign="TOP">
+		<td width="42">a</td>
+		<td width="54">All</td>
+	</tr>
+</table>
+
+<p class="code" style="margin-bottom: 0.2in"><br><br></p>
+<table border="1" cellpadding="4" cellspacing="3" width="100%">
+	<colgroup>
+		<col width="18*"><col width="238*">
+	</colgroup>
+	<thead>
+		<tr>
+			<td sdnum="1033;" sdval="400" valign="BOTTOM" width="7%">400</td>
+			<td valign="TOP" width="93%">Owner can read the file</td>
+		</tr>
+	</thead>
+	<tr>
+		<td sdnum="1033;" sdval="200" valign="BOTTOM" width="7%">200</td>
+		<td valign="TOP" width="93%">Owner can write to the file</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="100" valign="BOTTOM" width="7%">100</td>
+		<td valign="TOP" width="93%">Owner can execute</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="40" valign="BOTTOM" width="7%">40</td>
+		<td valign="TOP" width="93%">Group can read the file</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="20" valign="BOTTOM" width="7%">20</td>
+		<td valign="TOP" width="93%">Group can write to the file</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="10" valign="BOTTOM" width="7%">10</td>
+		<td valign="TOP" width="93%">Group can execute the file</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="777" valign="BOTTOM" width="7%">777</td>
+		<td valign="TOP" width="93%">User group and owner have full permissions</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="755" valign="BOTTOM" width="7%">755</td>
+		<td valign="TOP" width="93%">Owner can read write and execute no one else 
+		can write</td>
+	</tr>
+	<tr>
+		<td sdnum="1033;" sdval="640" valign="BOTTOM" width="7%">640</td>
+		<td valign="TOP" width="93%">Ownere can read and write group can read</td>
+	</tr>
+</table>
+
+<p><br><br></p>
+
+<p>function chmod(FileName: PChar; Mode: LongWord): Integer; cdecl;</p>
+<table border="1" cellpadding="4" cellspacing="3" width="614">
+	<colgroup>
+		<col width="111"><col width="34"><col width="430">
+	</colgroup>
+	<thead>
+		<tr>
+			<td valign="TOP" width="111">
+
+			<p class="code">S_IRWXU</p>
+			</td>
+			<td sdnum="1033;" sdval="700" valign="BOTTOM" width="34">
+
+			<p align="RIGHT" class="code">700</p>
+			</td>
+			<td valign="TOP" width="430">
+
+			<p class="code">mask for file owner permissions</p>
+			</td>
+		</tr>
+	</thead>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IRUSR</p>
+		</td>
+		<td sdnum="1033;" sdval="400" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">400</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">owner has read permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IWUSR</p>
+		</td>
+		<td sdnum="1033;" sdval="200" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">200</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">owner has write permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IXUSR</p>
+		</td>
+		<td sdnum="1033;" sdval="100" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">100</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">owner has execute permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IRWXG</p>
+		</td>
+		<td sdnum="1033;" sdval="70" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">70</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">mask for group permissions</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IRGRP</p>
+		</td>
+		<td sdnum="1033;" sdval="40" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">40</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">group has read permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IWGRP</p>
+		</td>
+		<td sdnum="1033;" sdval="20" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">20</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">group has write permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IXGRP</p>
+		</td>
+		<td sdnum="1033;" sdval="10" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">10</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">group has execute permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IRWXO</p>
+		</td>
+		<td sdnum="1033;" sdval="7" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">7</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">mask for permissions for others (no group)</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IROTH</p>
+		</td>
+		<td sdnum="1033;" sdval="4" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">4</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">others have read permission</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IWOTH</p>
+		</td>
+		<td sdnum="1033;" sdval="2" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">2</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">others have write permisson</p>
+		</td>
+	</tr>
+	<tr>
+		<td valign="TOP" width="111">
+
+		<p class="code">S_IXOTH</p>
+		</td>
+		<td sdnum="1033;" sdval="1" valign="BOTTOM" width="34">
+
+		<p align="RIGHT" class="code">1</p>
+		</td>
+		<td valign="TOP" width="430">
+
+		<p class="code">others have execute permission</p>
+		</td>
+	</tr>
+</table>
+
+<p><br><br></p>
+<pre>procedure TForm1.RunCheck(Mode: Cardinal;
+  Box1, Box2, Box3: TCheckBox;
+  ValRead, ValWrite, ValExe: Cardinal);
+begin
+    if (mode and ValRead) = ValRead then
+      Box1.Checked := True
+    else
+      Box1.Checked := False;
+
+    if (mode and ValWrite) = ValWrite then
+      Box2.Checked := True
+    else
+      Box2.Checked := False;
+
+    if (mode and ValExe) = ValExe then
+      Box3.Checked := True
+    else
+      Box3.Checked := False;
+end;
+
+// Convert a __time_t structure into a string                                                                  
+function GetUTime(Time: __time_t): string;
+var
+  UTime: PUnixTime;
+begin
+  // gmtime is Greenwich mean time, or Universal Coordinate Time (UCT)
+  // to get that, you call gmtime. We want local time, so call
+  // localtime instead of gmtime (Of course, in London, you don't need to
+  // think about this in quite the same way you do in California.)
+  UTime :=  gmtime(@Time);
+  
+  Result := Format('%02d/%02d/%02d %02d:%02d:%02d' ,
+    [UTime.tm_mon + 1, UTime.tm_year +2000, Utime.tm_mday,
+    UTime.tm_hour, UTime.tm_min, Utime.tm_sec]);
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  FileName: string;
+  StatBuffer: TStatBuf;
+  Time: __time_t; // This resolves to type Integer;
+  S: string;
+begin
+  if OpenDialog1.Execute then begin
+    FileName := OpenDialog1.FileName;
+    Edit1.Text := FileName;
+    stat(PChar(FileName), StatBuffer);
+    ListBox1.Items.Add('Mode = ' + IntToStr(StatBuffer.st_mode));
+    ListBox1.Items.Add('UUID = ' + IntToStr(StatBuffer.st_uid));
+    ListBox1.Items.Add('GID = ' + IntToStr(StatBuffer.st_gid));
+    ListBox1.Items.Add('Size = ' + IntToStr(StatBuffer.st_size));
+    ListBox1.Items.Add('Inode = ' + IntToStr(StatBuffer.st_ino));
+    ListBox1.Items.Add('Blocksize = ' + IntToStr(StatBuffer.st_blksize));
+    ListBox1.Items.Add('Blocks = ' + IntToStr(StatBuffer.st_blocks));
+    { Days between TDateTime basis (12/31/1899) and Unix time_t basis (1/1/1970) }
+    // UnixDateDelta = 25569;
+
+    S := GetUTime(StatBuffer.st_atime);
+    ListBox1.Items.Add('Accessed Time = ' + S);
+    S := GetUTime(StatBuffer.st_mtime);
+    ListBox1.Items.Add('Modified Time = ' + S);
+    S := GetUTime(StatBuffer.st_ctime);
+    ListBox1.Items.Add('Change Time = ' + S);
+
+    RunCheck(StatBuffer.st_mode, OwnerReadBox, OwnerWriteCheckBox,
+      OwnerExecuteCheckBox, S_IRUSR, S_IWUSR, S_IXUSR);
+
+    RunCheck(StatBuffer.st_mode, GroupReadBox, GroupWriteBox,
+      GroupExecuteBox, S_IRGRP, S_IWGRP, S_IXGRP);
+
+    RunCheck(StatBuffer.st_mode, OtherReadBox, OtherWriteBox,
+      OtherExecuteBox, S_IROTH, S_IWOTH, S_IXOTH);
+  end;
+end;</pre>
+
+<h3><a id="chown">chown</a></h3>
+
+<ul>
+	<li>chown will allow you to change the owner of a file</li>
+	<li>chown ccalvert.ccalvert myfile.pas</li>
+	<li>The first ccalvert is the owner, the other is the group</li>
+	<li>There is also chgrp, which will change just the group</li>
+</ul>
+
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<title>G:\Src\Git\Writing\Elvenware\os\linux\XWinOpenBox</title>
+
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport" />
+<link href="/charlie/libs/css/style2.css" rel="stylesheet" title="style2" type="text/css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/sunny/jquery-ui.css" />
+<!-- link href="/charlie/libs/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" / -->
+<!-- script src="/charlie/libs/scripts/jquery.min.js"></script -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2806409-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+
+
+<div id="container">
+	<header>
+		<div class="navButton" onclick="elvenware.toggleMenu()">
+			Toggle Menu</div>
+		<h1>Charlie Calvert on Elvenware</h1>
+		<h2>Writing Code and Prose on Computers</h2>
+	</header>
+	<nav>
+		<h2>Menu</h2>
+		<div id="accordion00">
+			<h2 class="navSection01">Core Code</h2>
+				<ul>
+					<li><a href="/charlie/development/index.html">Strongly Typed</a></li>
+					<li><a href="/charlie/development/web/index.html">Web &amp; Scripts</a></li>
+					<li><a href="/charlie/development/cloud/index.shtml">Cloud</a></li>
+				</ul>
+			
+			<h2 class="navSection02">OS and Tools</h2>
+				<ul>
+					<li><a href="/charlie/os/index.html">OS</a></li>
+					<li><a href="/charlie/development/database/index.html">Database</a></li>
+					<li><a href="/charlie/books/index.html">My Writing</a></li>
+				</ul>
+			
+			<h2 class="navSection03">Art</h2>
+				<ul>
+					<li><a href="/charlie/Art/index.html">Poems &amp; Photos</a></li>
+					<li><a href="/charlie/books/reading/index.html">Book Reviews</a></li>
+					<li><a href="/charlie/spirit/index.html">Spiritual</a></li>
+				</ul>
+			
+			<h2 class="navSection04">Links</h2>
+				<ul>
+					<li><a href="/charlie/links.html">My Links</a></li>
+					<li><a href="http://www.falafel.com/">Falafel</a></li>
+					<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+				</ul>
+		</div>
+	</nav>
+
+	<article>
+		<figure>
+			<img alt="Elvenware" src="/charlie/images/elvenwarelogo.png" /></figure>
+<ul>
+	<li><a href='#install-openbox-gui'>Install OpenBox GUI</a></li>
+	<li><a href='#window-manager-vs-desktop-environment'>Window Manager vs Desktop Environment</a></li>
+	<li><a href='#x-window'>X Window</a></li>
+	<li><a href='#installing-gnome-or-kde'>Installing Gnome or KDE</a></li>
+	<li><a href='#links'>Links</a></li>
+	<li><a href='#adjust-resolution'>Adjust Resolution</a></li>
+	<li><a href='#install-video-drives-for-nvidia'>Install Video Drives for NVIDIA</a></li>
+	<li><a href='#alternative.'>Alternative.</a></li>
+	<li><a href='#install-the-virtualbox-additions-for-ubuntu-server'>Install the VirtualBox Additions for Ubuntu Server</a></li>
+	<li><a href='#edit-the-menu'>Edit the Menu</a></li>
+	<li><a href='#background-image'>Background Image</a></li>
+	<li><a href='#link'>Link</a></li>
+</ul>
+<h2 id="install-openbox-gui">Install OpenBox GUI</h2>
+<p>When you install Ubuntu Server, you begin at a black and white, text only, command line. For a production sever, it is probably best to stay there. You can, in fact, do everything you want from the command line without ever using the mouse or other tools. There is even a text based browser called Lynx that you can use in a pinch, though I find it much more difficult to master than more familiar tools such as FireFox or Chrome.  However, many users would prefer to be able to use a mouse for some operations, and to browse with a GUI based browser. If you want to do that, then you should install a <strong>desktop environment</strong> such as OpenBox, Gnome or KDE****on top of the Linux command line. The end result can be a very fast, very light weight GUI interface.</p>
+<p>Gnome or KDE are full desktop environments similar to what is installed with Ubuntu desktop, which in turn is similar to Windows or the Mac. These are great environments but they relatively heavy weight, at least compared to Openbox. This may not matter on a powerful machine, but they can slow you down if you have a slow or resource strapped machine. To keep things light, use <a href="http://openbox.org/">OpenBox</a> instead. (I should add that if you are new to Linux, then you should probably install Ubuntu desktop if at all possible, as the Linux command line can frustrate the uninitiated.</p>
+<p>Here are the commands to install OpenBox on a server edition of Ubuntu which has no GUI at all when you start. It is a two step process: first install X11 (<a href="http://en.wikipedia.org/wiki/X_Window_System">X Window environment</a>) and then install OpenBox.</p>
+<pre class="code"><code>sudo apt-get install xorg
+sudo apt-get install openbox</code></pre>
+<p><a href="images/AptOpenBox.png"><img src="images/AptOpenBoxSmall.png" alt="Apt installing openbox" /></a></p>
+<p><strong>Figure 01: Installing OpenBox. Notice the first line, where I write sudo apt-get openbox. The correct syntax is sudo apt-get install openbox.</strong></p>
+<p>You probably also want to install FireFox:</p>
+<pre class="code"><code>sudo apt-get install firefox</code></pre>
+<p>When you have these tools installed, the next step is start the X-Window system. To do that, you simply type:</p>
+<p><strong>startx</strong></p>
+<p>When OpenBox first starts, you are greeted by a blank screen. Right click to get the menu.</p>
+<h2 id="window-manager-vs-desktop-environment">Window Manager vs Desktop Environment</h2>
+<p>OpenBox is a window manager. This means it provides the technology to open and close windows. It does not provide an entire desktop environment like Windows or Ubuntu Desktop that comes with a taskbar and system panel.</p>
+<h3 id="x-window">X Window</h3>
+<p>X Window is a graphical environment with a long history dating back to the mid-eighties. That is the same time frame when both Apple and Microsoft first released GUI's. Here are some dates of first releases:</p>
+<ul>
+<li>Xerox PARC first GUI debuts in 1975</li>
+<li><a href="http://en.wikipedia.org/wiki/Xerox_Star">Xerox 810 Star Information System</a>, the first full GUI, shipped in 1981.</li>
+<li>The Apple Macintosh shipped January 24, 1984 (The Apple Lisa was released on Jan 19, 1983.)</li>
+<li>X1, the first X Window version, was released in June, 1984. The first version licensed to third parties was X6, released in January of 1985.</li>
+<li>Microsoft Windows 1.0, running on top of DOS, was released on November 20, 1985.</li>
+</ul>
+<p>X Window is a bit different from either Windows or the Mac in that it can be run either directly on top of the command line, or remotely. This is possible because it has a network protocol built into it. This means that you can do neat tricks such as install tools on Windows (ming is an example) that will allow you to run remotely hosted Linux applications on your Windows desktip.</p>
+<p> If you are at the Linux command prompt, then you can start X Window and load a kind of minimal GUI that would let you run applications like FireFox. Or, you can start X Window (ming) on Windows, and load one of the applications from your Linux server on your Windows desktop. The application actually runs on the Linux server, but it's display is sent across the wire to your Windows desktop. Of course, X Window was not designed primarily for Windows to Linux communications, but rather for communications from any one machine, be it Linux or Windows, to some remote server or desktop. Most Linux based graphical environments are based on X11.</p>
+<h3 id="installing-gnome-or-kde">Installing Gnome or KDE</h3>
+<p>Here is the commands to install Gnome</p>
+<pre class="code"><code>sudo apt-get install ubuntu-desktop</code></pre>
+<p>Here is how to install KDE</p>
+<pre class="code"><code>sudo apt-get install kubuntu-desktop</code></pre>
+<h3 id="links">Links</h3>
+<p>For more details you can read this:</p>
+<p><a href="https://help.ubuntu.com/community/ServerGUI">https://help.ubuntu.com/community/ServerGUI</a>.</p>
+<h2 id="adjust-resolution">Adjust Resolution</h2>
+<p>I have often had a struggle trying to set the screen resolution on Linux. There are some tools that automate the provcess, including Startup-Manager.</p>
+<pre class="code"><code>sudo apt-get install startupmanager</code></pre>
+<p>Then to run the tool just type:</p>
+<pre class="code"><code>sudo startupmanager</code></pre>
+<p>After you set the resolution, you should consider rebooting:</p>
+<pre class="code"><code>sudo reboot</code></pre>
+<p>After restarting you should (if everything worked) come up in the new resolution that you chose.</p>
+<h2 id="install-video-drives-for-nvidia">Install Video Drives for NVIDIA</h2>
+<p>See <a href="http://www.noobslab.com/2011/09/nvidia-drivers-for-ubuntu-1110-oneiric.html">this post</a>, which says: run the following commands in a terminal window:</p>
+<pre class="code"><code>sudo apt-add-repository ppa:ubuntu-x-swat/x-updates
+sudo apt-get update
+sudo apt-get install nvidia-current</code></pre>
+<p>A tool that might help is ndr.</p>
+<h2 id="alternative.">Alternative.</h2>
+<p>It is possible to attach to a Linux server from Windows and run the applications that live on the Windows box in your windows desktop. You install a copy of XWindows on Windows, and then use the xWindows tools to log in remotely to applications running on Linux. If says <a href="http://forums.atomicmpc.com.au/index.php?showtopic=43363">here</a> that you can use XDMCP. It's unlikely that it is not already installed, but you may need to first install the openssh-server package:</p>
+<pre class="code"><code>sudo apt-get install openssh-server</code></pre>
+<p>On your other system, start a X server window. On Windows, use Xming, or on MacOS X, Xquartz and Xephyr. Use SSH to connect to the remote host and forward your X server socket across:</p>
+<pre class="code"><code>$ DISPLAY=:1.0 ssh -Y user@otherhost.otherdomain gnome-session --session=ubuntu</code></pre>
+<h2 id="install-the-virtualbox-additions-for-ubuntu-server">Install the VirtualBox Additions for Ubuntu Server</h2>
+<p>This is covered in the <a href="VirtualBox.html">page on VirtualBox</a>.</p>
+<h2 id="edit-the-menu">Edit the Menu</h2>
+<p>You can edit the Menu.xml file. It can be stored in the ~/.config/openbox directly. Because the .config directory begins with a period, you will not normally see it when you run the list command:</p>
+<pre class="code"><code>ls</code></pre>
+<p>Instead, run list with the -a option:</p>
+<pre class="code"><code>ls -a</code></pre>
+<p>If you don't see a .config directory, then create one. Inside it create an openbox directory:</p>
+<p>mkdir .config</p>
+<p>mkdir .config/openbox</p>
+<p>Now copy the existing menu for Openbox into this directory, and edit it as you feel best:</p>
+<pre class="code"><code>cp /etc/xdg/openbox/menu.xml .config/openbox/ .</code></pre>
+<h2 id="background-image">Background Image</h2>
+<p>Download some images. Install nitrogen:</p>
+<p>sudo apt-get install nitrogen</p>
+<p>Add nitrogen to the menu. The simplest way is with a program called obmenu, which you can download with:</p>
+<p>sudo <strong>apt-get install nitrogen</strong>.</p>
+<p>Here is the entry you can add to Menu.xml:</p>
+<pre class="code"><code>&lt;item label=&quot;nitrogen&quot;&gt;
+  &lt;action name=&quot;Execute&quot;&gt;
+    &lt;execute&gt;
+       nitrogen /home/charlie/Downloads
+    &lt;/execute&gt;
+  &lt;/action&gt;
+&lt;/item&gt;</code></pre>
+<p>In this particular example, /home/charlie/Downloads is the folder where I have a list of background files. If you execute nitrogen from the Openbox menu, then you will get a chance to pick which of the files found in the folder you want to display as your wallpaper.</p>
+<h2 id="link">Link</h2>
+<ul>
+<li><a href="https://help.ubuntu.com/community/Openbox">Ubuntu Openbox community</a>
+<ul>
+<li><a href="https://help.ubuntu.com/community/Openbox#Configuration">Configuration Section</a></li>
+</ul></li>
+<li><a href="index.html">Back to Linux Top</a></li>
+</ul>
+</article>
+	<footer>
+
+		<p>Copyright &copy; <a href="/charlie/index.html">Charlie Calvert</a> |
+		<a href="/charlie/contents.html">Site Overview</a> |
+		<a href="/charlie/development/index.html">Writing Code</a> |
+		<a href="/charlie/development/web/index.html">Web</a> |
+		<a href="/charlie/development/web/JavaScript/index.html">JavaScript</a> |
+		<a href="/charlie/books/index.html">My Books</a> </p>
+	</footer>
+</div>
+
+</body>
+</html>
+
+
+

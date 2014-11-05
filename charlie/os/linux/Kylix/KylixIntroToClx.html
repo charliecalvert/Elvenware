@@ -1,0 +1,194 @@
+<HTML>
+<HEAD><TITLE>Intro To Clx</TITLE>
+<script language="JavaScript" src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+<!--#include virtual="../../scripts/HeaderInfo.html" -->
+</HEAD>
+
+<BODY>
+
+<H1>Introduction to CLX </H1>
+
+<P>Charlie Calvert </P> 
+
+<H1>Overview</H1>
+
+<UL>
+<LI>What is CLX? </LI>
+<LI>What is Qt? </LI>
+<LI>Why Qt? </LI>
+<LI>How does X Windows work? </LI>
+<LI>What is in and out? </LI>
+<LI>Events and signals </LI>
+</UL>
+
+<H2>What Is CLX? </H2>
+<ul>
+<LI>CLX is a set of platform independent components </LI>
+<LI>CLX is divided into several parts </LI>
+<LI>BaseCLX - base CLX, system, SysUtils, classes, etc. </LI>
+<LI>VisualCLX � visual components - based on Qt </LI>
+<LI>DataCLX � database components - based on dbExpress and MIDAS </LI>
+<LI>NetCLX � WebBroker, InternetExpress, � </LI>
+</UL>
+
+<H2>What is CLX? </H2>
+<ul>
+<LI>What Is Qt? </LI>
+<LI>A platform independent C++ class library built to run under windows and X Windows </LI>
+<LI>The C++ class library that is most prevalent under Linux and is used for KDE, the most popular desktop </LI>
+<LI>Qt licensing models </LI>
+<LI>No license for Delphi based CLX projects </LI>
+<LI>Open source for open source projects </LI>
+<LI>Qt under Linux is Open Source for Open Source projects. </LI>
+<LI>For more information go to www.trolltech.com </LI>
+</UL>
+
+<H2>Why use Qt instead of GTK, etc. </H2>
+<UL>
+<LI>Qt was closer to Windows style of development than GTK </LI>
+<LI>Qt graphics model was closer to VCL graphics model </LI>
+<LI>Painter (similar to Canvas), Font, Pen, Brush objects </LI>
+<LI>Qt supported KDE better than GTK </LI>
+<LI>We felt using Qt would be quicker than adapting GTK to VCL </LI>
+<LI>Had to adapt to Qt�s C++ API </LI>
+<LI>Utilities create Delphi bindings from Qt header files </LI>
+<LI>MOC (meta object compiler) � generates RTTI for Qt  </LI>
+<LI>VisualCLX Handles and Hooks </LI>
+</UL>
+
+<H2>How Do I Get Qt? </H2>
+<ul>
+<LI>Qt free edition - a QPL version is available for download at www.Trolltech.Com </LI>
+<LI>Documentation is also available at www.trolltech.com </LI>
+</UL>
+
+<H2>What Makes Qt Special? </H2>
+<ul>
+<LI>Qt classes look very much like VCL components </LI>
+<LI>Properties appear as get/set method pairs (e.g. caption/setCaption). </LI>
+<LI>Events appear as signals </LI>
+<LI>Events are user created </LI>
+<LI>Signals are component created </LI>
+<LI>VCL merges the two </LI>
+<LI>Qt introduces many standard controls Called widgets </LI>
+<LI>Qt handles the message loop </LI>
+</UL>
+
+<H2>What Makes Qt Special? </H2>
+<ul>
+<LI>Qt uses the X Window library </LI>
+<LI>Windows are X handles </LI>
+<LI>Graphics contexts are X graphic handles </LI>
+<LI>Qt uses the windows API under windows </LI>
+<LI>Very good C++ class library </LI>
+<LI>Some classes not wrapped </LI>
+<LI>Dictionaries, lists, maps, � </LI>
+<LI>Classes are very component like </LI>
+</UL>
+
+<H2>How X Differs From Windows </H2>
+<ul>
+<LI>X separates an application into </LI>
+<LI>The client (the code you write) </LI>
+<LI>The server (the display) </LI>
+<LI>Physical separation of UI from application </LI>
+<LI>Separation introduces performance issues </LI>
+<LI>All display commands go through TCP/IP </LI>
+<LI>X11 Architecture </LI>
+</UL>
+
+<H2>What Is New to VisualCLX </H2>
+<ul>
+<LI>VisualCLX will use Qt for 80% of its widget implementation </LI>
+<LI>VisualCLX uses handles and hooks </LI>
+<LI>VisualCLX will introduce styles </LI>
+<LI>A new way of doing �owner� draw </LI>
+<LI>You can create your own styles </LI>
+<LI>Ties into Linux themes </LI>
+</UL>
+
+<H1>Events and Signals </H1>
+<ul>
+<LI>Events are translations of X user events (key press, mouse move, paint, etc). </LI>
+<LI>Signals are component defined �events�, corresponding to VCL events (OnClick, OnChange, etc). </LI>
+<LI>Hooking Events requires a special hook object </LI>
+</ul>
+
+<H1>Porting to CLX </H1>
+<ul>
+<LI>What Components are you using </LI>
+<LI>Use VCL Scanner </LI>
+<LI>Check with 3rd Party component vendors for availability </LI>
+<LI>Examine custom components </LI>
+<LI>Examine your application for Windows dependencies </LI>
+<LI>Windows API </LI>
+<LI>File case sensitivity, etc. </LI>
+<LI>Determine API availability </LI>
+</ul>
+
+<H1>Porting custom components to CLX</H1>
+<UL>
+<LI>Expect more differences </LI>
+<LI>Look for Windows API calls </LI>
+<LI>Use VCL wrappers </LI>
+<LI>TCanvas, TBitmap, etc. </LI>
+<LI>MouseDown, MouseMove, etc.       </LI>
+<LI>Create your own abstractions </LI>
+<LI>Start changing the components today </LI>
+<LI>Rule of thumb: If the API came from Microsoft, it probably will not be on Linux </LI>
+</UL>
+
+<H1>What is out? </H1>
+<ul>
+<LI>Messages and message directive (Still supported by the compiler) </LI>
+<LI>WinAPI (Windows.pas etc.) </LI>
+<LI>COM/ActiveX/OLE </LI>
+<LI>Use dynamic methods </LI>
+<LI>Recreate window handle logic (not needed) </LI>
+<LI>Setting some windows attributes when window handle existed </LI>
+<LI>Out of the first release </LI>
+<LI>Docking (in the first release) </LI>
+<LI>Docking � not in 1st version </LI>
+<LI>BiDi (bi-directional mode) � not in 1st version? </LI>
+<LI>IME (input method editor) � not in 1st version? </LI>
+</UL>
+
+<H1>What is different? </H1>
+<ul>
+<LI>Many messages are now dynamics </LI>
+<LI>Broadcasts � parent font � may keep messages </LI>
+<LI>Unit names, locations of some classes </LI>
+<LI>Class names and hierarchy mostly unchanged </LI>
+<LI>Q(unit name) � QControls, QComCtrls </LI>
+<LI>Property editors mostly unchanged </LI>
+<LI>Owner draw and Styles </LI>
+<LI>.dfm extension will change for CLX </LI>
+<ul>
+<LI>.dfm for windows, .xfm? for Linux </LI>
+<LI>Format will be the same (text and binary) </LI>
+<LI>This is done to help to create single source applications </LI>
+</ul>
+</UL>
+
+<H1>What is the same? </H1>
+<UL>
+<LI>TCanvas </LI>
+<LI>The class hierarchy </LI>
+<LI>TControl, TWidgetControl (rename of TWinControl) TForm, TScrollingWidget (rename of TScrollingWinControl). </LI>
+<LI>MouseDown, MouseMove, KeyDown, etc. </LI>
+<LI>BaseCLX (Classes, etc.) </LI>
+</ul>
+<LI>Events and Signals </LI>
+<LI>Events are translations of X user events (key press, mouse move, paint, etc). </LI>
+<LI>Signals are </LI>
+<LI>Component defined "events" </LI>
+<LI>Corresponding to VCL events (OnClick, OnChange, etc). </LI>
+<LI>Hooking events requires a special hook object � because of Qt C++isms. </LI>
+<LI>Hook object is transparent to the developer </LI>
+<LI>Demos </LI>
+<LI>Questions and (Hopefully) Answers </LI>
+
+
+</BODY>
+</HTML>
+

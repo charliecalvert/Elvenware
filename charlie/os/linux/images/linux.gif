@@ -1,0 +1,124 @@
+<html>
+<head>
+  <title>Net CLX</title>
+  <script language="JavaScript" src="../../scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+<!--#include virtual="../../scripts/HeaderInfo.html" -->
+</head>
+<body>
+
+<h1>WebBroker Architecture and NetCLX</h1>
+
+<h2>Overview</h2>
+<ul>
+  <li>Cross-platform Internet/Web components</li>
+  <li>WebBroker is a part of NetCLX</li>
+  <li>Includes Socket components</li>
+  <li>Indy components will ship in Delphi 6 and Kylix</li>
+  <li>Download now from http://www.nevrona.com/indy</li>
+  <li>Open source project. You can help!</li>
+  <li>Replacement for WinShoes and FastNet components</li>
+</ul>
+
+<h2>WebBroker Architecture</h2>
+<ul>
+  <li>WebBroker is a part of NetCLX</li>
+  <li>WebBroker is a component-based architecture for programming web server 
+  applications</li>
+  <li>Abstracts HTTP protocol handling</li>
+  <li>Uses components for processing requests and responses</li>
+  <li>Supports cookies</li>
+  <li>Supports methods of client communication: mtGet, mtHead, mtPost, mtPut, 
+  mtAny</li>
+</ul>
+
+<h2>WebBroker Components</h2>
+<ul>
+  <li>TWebDispatcher</li>
+  <li>Can convert any DataModule into a web server module. Automatically part of a 
+  TWebModule</li>
+  <li>TWebRequest</li>
+  <li>Processes requests from the client</li>
+  <li>TWebResponse</li>
+  <li>Formulates responses from the server to the client, supports MIME types</li>
+  <li>TCustomContentProducer</li>
+  <li>Descendant components creates various HTML (or other, like XML) content for 
+  response to client</li>
+</ul>
+
+<h2>WebBroker implementation</h2>
+<ul>
+  <li>Conforms to the HTTP standards</li>
+  <li>Cross-platform solution</li>
+  <li>Specific server support</li>
+  <li>ISAPI/NSAPI dynamic link library</li>
+  <li>CGI Stand-alone executable</li>
+  <li>Apache shared module (DLL/SO)</li>
+  <li>TestSvr enabled module (for debugging)</li>
+  <li>Custom content producers recognize special tags that look like <#tag></li>
+  <li>Content producers can be "chained" for performance or personalization 
+  reasons</li>
+</ul>
+
+<h2>WebBroker Interface</h2>
+<ul>
+  <li>Actions are "urls" or paths to the file</li>
+  <li>New behavior can be added to the web server by creating new actions</li>
+  <li>Actions are implemented in TWebActionItem, which is a collection contained 
+  in TWebDispatcher</li>
+</ul>
+
+<h2>TWebActionItem</h2>
+<ul>
+  <li>Properties</li>
+  <UL>
+  <li>Default (no path required)</li>
+  <li>Enabled</li>
+  <li>MethodType</li>
+  <li>PathInfo (invocation URL)</li>
+  <li>Producer (default content generation)</li>
+  </UL>
+  <li>Events</li>
+  <UL>
+  <li>OnAction (custom content generation)</li>
+  </UL>
+</ul>
+
+<h2>WebModule</h2>
+<ul>
+  <li>Automatically creates and manages TWebDispatcher</li>
+  <li>Has public properties</li>
+  <ul>
+  <li>Request : TWebRequest</li>
+  <li>Response : TWebResponse</li>
+  </UL>
+</ul>
+
+<h2>WebDispatcher event sequence</h2>
+<ul>
+  <li>OnCreate</li>
+  <li>BeforeDispatch</li>
+  <li>AfterDispatch</li>
+  <li>OnDestroy</li>
+  <li>OnException can occur anywhere</li>
+</ul>
+
+<h2>Apache with CGI Only</h2>
+
+<img SRC="apache1.gif" width="622" height="474">
+
+<h2>Apache With Shared Modules</h2>
+
+<img SRC="apache2.gif" width="621" height="475">
+
+<h2>NetCLX – WebBroker, InternetExpress, …</h2>
+<ul>
+  <li>Basic Midas XML</li>
+  <li>Internet Express</li>
+  <li>Not in Kylix - ISAPI</li>
+  <li>Demos</li>
+  <li>Questions and (Hopefully) Answers</li>
+</ul>
+
+</body>
+</html>
+

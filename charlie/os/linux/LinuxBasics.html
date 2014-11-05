@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<title>G:\Src\Git\Writing\Elvenware\os\linux\LinuxBasics</title>
+
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport" />
+<link href="/charlie/libs/css/style2.css" rel="stylesheet" title="style2" type="text/css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/sunny/jquery-ui.css" />
+<!-- link href="/charlie/libs/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" / -->
+<!-- script src="/charlie/libs/scripts/jquery.min.js"></script -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2806409-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+
+
+<div id="container">
+	<header>
+		<div class="navButton" onclick="elvenware.toggleMenu()">
+			Toggle Menu</div>
+		<h1>Charlie Calvert on Elvenware</h1>
+		<h2>Writing Code and Prose on Computers</h2>
+	</header>
+	<nav>
+		<h2>Menu</h2>
+		<div id="accordion00">
+			<h2 class="navSection01">Core Code</h2>
+				<ul>
+					<li><a href="/charlie/development/index.html">Strongly Typed</a></li>
+					<li><a href="/charlie/development/web/index.html">Web &amp; Scripts</a></li>
+					<li><a href="/charlie/development/cloud/index.shtml">Cloud</a></li>
+				</ul>
+			
+			<h2 class="navSection02">OS and Tools</h2>
+				<ul>
+					<li><a href="/charlie/os/index.html">OS</a></li>
+					<li><a href="/charlie/development/database/index.html">Database</a></li>
+					<li><a href="/charlie/books/index.html">My Writing</a></li>
+				</ul>
+			
+			<h2 class="navSection03">Art</h2>
+				<ul>
+					<li><a href="/charlie/Art/index.html">Poems &amp; Photos</a></li>
+					<li><a href="/charlie/books/reading/index.html">Book Reviews</a></li>
+					<li><a href="/charlie/spirit/index.html">Spiritual</a></li>
+				</ul>
+			
+			<h2 class="navSection04">Links</h2>
+				<ul>
+					<li><a href="/charlie/links.html">My Links</a></li>
+					<li><a href="http://www.falafel.com/">Falafel</a></li>
+					<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+				</ul>
+		</div>
+	</nav>
+
+	<article>
+		<figure>
+			<img alt="Elvenware" src="/charlie/images/elvenwarelogo.png" /></figure>
+<ul>
+	<li><a href='#linux-basics'>Linux Basics</a></li>
+	<li><a href='#distros'>Linux Distros</a></li>
+	<li><a href='#linuxUser'>Creating a Linux User</a></li>
+	<li><a href='#ssh'>Set Up SSH</a></li>
+	<li><a href='#userTips'>Tips on Setting up Users</a></li>
+	<li><a href='#hyperv'>Installing Ubuntu Server Under Hyper-V</a></li>
+	<li><a href='#the-key-points'>The Key Points</a></li>
+</ul>
+<h2 id="linux-basics">Linux Basics</h2>
+<p>This page covers some basic information about using Linux.</p>
+<h2 id="distros">Linux Distros</h2>
+<p>There are many different versions of Linux. At this time, I am primarily interested in Ubuntu variants, including Mint and Ubuntu.</p>
+<ol type="1">
+<li>Track the most popular distributions: <a href="http://distrowatch.com/">http://distrowatch.com/</a></li>
+<li><a href="http://linuxmint.com/">Mint Linux</a></li>
+<li><a href="http://www.ubuntu.com/">Ubuntu Linux</a></li>
+</ol>
+<h2 id="linuxUser">Creating a Linux User</h2>
+<p>In the example shown below, I assume that you are using an EC2 instance of Ubuntu on the Amazon Web Services cloud. However, the information is equally valid on any Linux box, whether it is in the cloud, or on your local machine. The only caveat being that it is slanted toward Ubuntu or Ubuntu related distros such as Mint.</p>
+<p>To create a new user on Linux:</p>
+<ul>
+<li>Use Putty to sign in to your EC2 box as <strong>ubuntu.</strong> The user <strong>ubuntu</strong> will have the rights to create your new user. (If you are not on an EC2 machine, just sign in to your account on the machine. The only caveat is that it must have privileges to run the <strong>sudo</strong> command.)</li>
+<li>Create a new group for your user called FirstInitialLastName where FirstInitialLastName is the first letter of your first name and your full last name, all in lower case, like this: <strong>jsmith</strong>. Here is the command to create the user: <strong>sudo addgroup jsmith.</strong>In this and all subsequent commands, you should, of course substitute your user name where ever you see the words <strong>jsmith.</strong></li>
+<li>Issue this command: <strong>sudo adduser --ingroup FirstInitialLastName FirstIntialLastName.</strong>For example: <strong>sudo adduser --ingroup jsmith jsmith</strong>. During this process you will be prompted for a password. Make sure you don't forget it!</li>
+<li>Now that you have created the new account, you might want to test it out. Here is the command to become jsmith: <strong>su -l jsmith.</strong> Here you would substitute your new user name for the <strong>jsmith</strong>. If you want to go back to being <strong>ubuntu</strong>, just type <strong>exit.</strong></li>
+</ul>
+<p>To review, here are the three commands:</p>
+<pre><code>sudo addgroup jsmith
+sudo adduser --ingroup jsmith jsmith
+su -l jsmith</code></pre>
+<p>Here is what the session for creating a new group might look like:</p>
+<pre><code>    ubuntu@domU-12-25-27-0B-60-D0:~$ sudo addgroup jsmith
+    Adding group `jsmith&#39; (GID XXXX) ...
+    Done.
+    ubuntu@domU-12-25-27-0B-60-D0:~$</code></pre>
+<p>Here is what the session for creating a new user might look like:</p>
+<pre><code>ubuntu@domU-12-25-27-0B-60-D0:~$ sudo adduser --ingroup jsmith jsmith
+Adding user `jsmith&#39; ...
+Adding new user `jsmith&#39; (1002) with group `jsmith&#39; ...
+Creating home directory `/home/jsmith&#39; ...
+Copying files from `/etc/skel&#39; ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for jsmith
+Enter the new value, or press ENTER for the default
+ Full Name []: Julie Smith
+ Room Number []:
+ Work Phone []:
+ Home Phone []:
+ Other []:
+Is the information correct? [Y/n] Y</code></pre>
+<p>Note that you entered a password and a full name. You can just hit enter for the <strong>Room Number</strong> all other prompts, until you get to the question about whether the information is correct. For that you must answer <strong>Y</strong> for <strong>yes</strong>. This command creates a new user, and adds him to the a new group called <strong>jsmith</strong>. Your group name, of course, will your first initial and last name, not mine.</p>
+<p>Here is what the session to become a new user might look like:</p>
+<pre><code>ubuntu@domU-12-25-27-0B-60-D0:~$ su -l jsmith
+Password:
+jsmith@domU-12-25-27-0B-60-D0:~$</code></pre>
+<p>Note that after you issue the command, your shell prompt has changed to include your new user name:</p>
+<pre><code>jsmith@domU-12-25-27-0B-60-D0:~$</code></pre>
+<p>You use this hint to help you confirm that you are signed in as a new user. Another technique is to issue the command: <strong>whoami</strong>.</p>
+<p>Please note that when you become the new user you will not have as many rights on the system as you did when you were <strong>ubuntu.</strong> We could, of course, have given <strong>jsmith</strong> those rights, but we did not. The <strong>jsmith</strong> account will become our new outward facing interface to the site. As a result, we want it to be as secure as possible. The way things are set up now, even if the user were entirely compromised, the hacker could only do damage to the users account. They would find it relatively difficult, however, to use the account to gain control of the system.</p>
+<p>Here is how to delete a user account if you want to start over:</p>
+<pre class="code"><code> sudo userdel jsmith </code></pre>
+<h2 id="ssh">Set Up SSH</h2>
+<p>Now that you have created your new user account, you will probably want to set up SSH so that you can use Putty and Filezilla to sign in and copy files to this account's <strong>public_html </strong>directory or some other location on the server. Here is an overview of what we are going to do:</p>
+<ol type="1">
+<li>Generate a new SSH key</li>
+<li>Copy the private key (pem file) back to our home machine</li>
+<li>Convert the PEM file to PPK file</li>
+<li>Set up Putty and Filezilla to work with your new user</li>
+</ol>
+<p><strong>NOTE</strong>: <em>Another, and perhaps more secure, approach would be to create the new private/public key pair on your home system, and copy only the public key to the new users account. Though that technique is a best practice, I'm not doing that now because it is a bit more difficult for new comers. One step at a time!</em></p>
+<p>Here is how to set up a key <strong><em>from the new users home directory</em></strong>: </p>
+<pre><code>ssh-keygen -t rsa -P &#39;&#39; -f ~/.ssh/id_rsa 
+cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre>
+<p><strong>NOTE</strong>:  <em>Commands like those shown above are difficult to get right. You can, however, block copy both lines and paste the commands directly into the shell window. Here is how to proceed: On your home machine, copy the commands with <strong>Ctrl-C</strong>. Now switch to the Putty shell. Right click on the command line, and both lines should be fed into the command line window and executed, one right after the other. It is probably helpful to type in relatively simple commands by hand, as it will help you memorize them. But these commands are confusing for new comers, and you need not attempt to memorize them.</em></p>
+<p>Because of their arcane complexity, it is probably best for new comers to think of the commands shown above as some kind of Harry Potter like incantation (ie <strong><em>Expecto Patronum</em></strong>) that creates the new key pair, and then copies the public key into a file called <strong>authorized_keys</strong>. The newly created public key is called <strong>id_rsa</strong>. At this stage, you need not know more -- except for one minor detail! Note the permissions for <strong>id_rsa:</strong></p>
+<pre><code>-rw------- 1 jsmith jsmith 1675 Nov  9 21:21 id_rsa</code></pre>
+<p>As you can see, only the owner has permissions to read and write to the file. In theory, no one else can even see the file or do much useful with it. If you don't have read permissions, you can't even see that the file exists. (You will find, however, that root can manipulate the file.)</p>
+<p>You now have to copy the key that you created from your Linux box back to your home machine.</p>
+<ul>
+<li>First, issue the <strong>exit</strong> command so that you one again become ubuntu. </li>
+<li>Then copy the key (<strong>id_rsa) </strong>into the <strong>ubuntu</strong> home directory. </li>
+<li>Use Filezilla to copy it to your home machine.</li>
+<li>For security purposes, you should now delete the key from your <strong>ubuntu</strong> home directory and from <strong>jsmith's</strong> .ssh directory. </li>
+<li>On your home machine, use PuttyGen to convert the key to a PPK file, just as you did when first setting up EC2.</li>
+<li>Set up Putty and and Filezilla</li>
+</ul>
+<p>Once you are ubuntu, here is how the process of copying the file from the <strong>jsmith</strong>directory to the <strong>ubuntu </strong>home directory looks:</p>
+<pre><code>sudo cp /home/jsmith/.ssh/id_rsa .</code></pre>
+<p>Now make the file visible to filezilla: </p>
+<pre><code>sudo chown ubuntu:ubuntu id_rsa</code></pre>
+<p>This command sets the owner and group for <strong>id_rsa</strong> to <strong>ubuntu.</strong> This means that <strong>ubuntu</strong> now owns the file, and hence has rights to it. This is a crucial step since Filezilla is attached to your Linux box as the user <strong>ubuntu. </strong>If the file were were still owned by <strong>jsmith</strong> or by <strong>root,</strong> then <strong>ubuntu</strong>, and hence Filezilla, would not have the rights to copy it to your home machine.</p>
+<p>Now copy it over with filezilla. Once you have it safely on your machine, the wisest thing to do might be to delete the file from your ubuntu and jsmith folders:</p>
+<pre><code>rm id_rsa</code></pre>
+<p>Windows feeds on file file extensions, and we have only a limited internal memory capacity. As a result, on your home machine I would rename <strong>id_rsa</strong> to something more friendly: <strong>ec2_jsmith.pem</strong></p>
+<p>Now use PuttyGen to convert the PEM file to a PPK file, as described earlier. Add the file to Pageant. Set up Putty and see if you can connect. Everything is as before, but of course this time in the Data page of Putty, you should set the user name to your first initial and last name:</p>
+<figure>
+<img src="images/Putty01.png" title="Click to embed Putty01.png" alt="Putty01.png" /><figcaption>Putty01.png</figcaption>
+</figure>
+<p><strong>Figure 01: Fill in your user name in the Auto-login field.</strong></p>
+<p>You have now completed the process of creating a new user on Linux with minimum privileges. If you would like to learn how to give the user privileges to serve up HTML files from a <strong>public_html</strong> directory, then go here:</p>
+<p><a href="/charlie/development/web/Server/Apache.html">/charlie/development/web/Server/Apache.html</a></p>
+<h2 id="userTips">Tips on Setting up Users</h2>
+<p>Notice that we have not given the new user you create permission to to run sudo. If you try to run a <strong>sudo</strong> command as the new user, the sudo nazi's will come get you:</p>
+<pre><code>ccalvert@domU-12-25-27-0B-60-D0:~$ sudo ls /var/www/
+[sudo] password for jsmith:
+jsmith is not in the sudoers file. **This incident will be reported.**
+jsmith@domU-12-25-27-0B-60-D0:~$</code></pre>
+<p>Of course, you can always become <strong>ubuntu</strong> again if you want to run a <strong>sudo</strong> command. In the meantime, it is best run as a normal user that does not to even have the rights to be <strong>root</strong>. That makes your system much more secure.</p>
+<p><em><strong>NOTE</strong>: You now have the ability to use Putty to sign in to your server either as ubuntu or as your newly created user. Consider opening up two Putty shell windows, one as Ubuntu, the other as your new user. That way you can do 99 percent of your work as the normal user, and resort to the power of being ubuntu only on rare occasions.</em></p>
+<p>Some links with additional information that you may or may not find useful:</p>
+<ul>
+<li><a href="http://www.elvenware.com/charlie/development/cloud/SshFtpsPutty.html#sshKeys">http://www.elvenware.com/charlie/development/cloud/SshFtpsPutty.html#sshKeys</a></li>
+<li><a href="http://blog.sofasurfer.org/2011/07/16/ubuntu-ec2-add-new-admin-user/">http://blog.sofasurfer.org/2011/07/16/ubuntu-ec2-add-new-admin-user/</a></li>
+</ul>
+<h2 id="hyperv">Installing Ubuntu Server Under Hyper-V</h2>
+<ul>
+<li>Here is a <a href="http://narendrapatel.com/2011/05/installing-ubuntu-serve-11-04-64bit-on-hyper-v/">helpful page</a> on Installing Ubuntu Server on Hyper-V</li>
+<li>Here are the hyper-v <a href="http://jimblizzard.wordpress.com/2009/05/22/hyper-v-keyboard-shortcuts-in-the-vm/">keyboard shortcuts</a>.</li>
+</ul>
+<h2 id="the-key-points">The Key Points</h2>
+<p>The install works more or less the way it would under VirtualBox, with a few minor variations. But getting the hyper-v extensions (which actually ship with Ubuntu!) and the networking going can be more complex.</p>
+<p>Start by using the nano (or pico) editor, or some editor of your choice, to modify the modules file:</p>
+<pre class="code"><code>sudo nano /etc/initramfs-tools/modules</code></pre>
+<p>In the file, add these four lines which initializae the hyper-v extensions:</p>
+<pre class="code"><code>hv_vmbus
+hv_storvsc
+hv_blkvsc
+hv_netvsc</code></pre>
+<p>Exit the editor and then type:</p>
+<pre class="code"><code>sudo update-initramfs –u
+sudo reboot</code></pre>
+<p>Now do this:</p>
+<pre class="code"><code>sudo nano /etc/network/interfaces</code></pre>
+<p>Yes the pico editor to add these lines to your file:</p>
+<pre class="code"><code>Auto eth0
+iface eth0 inet dhcp</code></pre>
+<p>Now you need to restart networking and reboot:</p>
+<pre class="code"><code>sudo /etc/init.d/networking restart
+sudo reboot</code></pre>
+</article>
+	<footer>
+
+		<p>Copyright &copy; <a href="/charlie/index.html">Charlie Calvert</a> |
+		<a href="/charlie/contents.html">Site Overview</a> |
+		<a href="/charlie/development/index.html">Writing Code</a> |
+		<a href="/charlie/development/web/index.html">Web</a> |
+		<a href="/charlie/development/web/JavaScript/index.html">JavaScript</a> |
+		<a href="/charlie/books/index.html">My Books</a> </p>
+	</footer>
+</div>
+
+</body>
+</html>
+
+
+

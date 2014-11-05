@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>VirtualMachines</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/charlie/images/favicon.png">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+	<link href="/charlie/libs/css/BootstrapIndex.css" rel="stylesheet" type="text/css" />
+	<!-- Latest compiled and minified JavaScript - Move to bottom of body element -->
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2806409-2']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+
+
+
+	<!-- removed  navbar-fixed-top -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a class="navbar-brand" href="/charlie/index.html">Elvenware</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/charlie/index.html">Home</a></li>
+					<li><a href="/charlie/contents.html">About</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Core Code</li>
+							<li><a href="/charlie/development/index.html">Strongly Typed</a></li>
+							<li><a href="/charlie/development/web/index.html">Web &amp; Scripts</a></li>
+							<li><a href="/charlie/development/cloud/index.shtml">Cloud</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">OS and Tools</li>
+							<li><a href="/charlie/os/index.html">OS</a></li>
+							<li><a href="/charlie/development/database/index.html">Database</a></li>
+							<li><a href="/charlie/books/index.html">My Writing</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Art</li>
+							<li><a href="/charlie/Art/index.html">Poems &amp; Photos</a></li>
+							<li><a href="/charlie/books/reading/index.html">Book Reviews</a></li>
+							<li><a href="/charlie/spirit/index.html">Spiritual</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Links</li>
+							<li><a href="/charlie/links.html">My Links</a></li>
+							<li><a href="http://www.github.com/charliecalvert">GitHub</a></li>
+							<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<figure><img alt="Elvenware" src="/charlie/images/elvenwarelogo.png" /></figure>
+<h2>Table of Contents</h2>
+<ul>
+	<li><a href='#virtual-box-on-elvenware'>Virtual Box on Elvenware</a></li>
+	<li><a href='#windows-8-hyper-v-and-virtualbox'>Windows 8 Hyper-v and VirtualBox</a></li>
+	<li><a href='#vboxWin'>Installing Windows On VirtualBox</a></li>
+	<li><a href='#installing-windows'>Installing Windows</a></li>
+</ul>
+<h2 id="virtual-box-on-elvenware">Virtual Box on Elvenware</h2>
+<p>I talk about VirtualBox and virtual machines in a number of places. Here is reasonably complete place. (I probably ought to bring all these together into a single Booklet called Virtual Machines.)</p>
+<ul>
+<li><a href="../../development/cloud/virtualization.html">General</a></li>
+<li><a href="../linux/VirtualBox.html">Linux</a></li>
+<li><a href="#vboxWin">Windows</a></li>
+</ul>
+<h2 id="windows-8-hyper-v-and-virtualbox">Windows 8 Hyper-v and VirtualBox</h2>
+<p>Windows 8 Hyper-V and VirtualBox do not get along. Issue two commands to be able to dual boot so that you have one version of Windows with Hyper-V and one without.</p>
+<pre><code>bcdedit /copy {current} /d &quot;Windows 8 (No Hyper-V)&quot; </code></pre>
+<p>You will see a GUID. It will look something like this: {f3344558-9414-11e0-8d94-999f16891df9}. Copy that guid, (the one on your you system, not the one I show here) then issues a second command:</p>
+<pre><code>bcdedit /set {YOUR GUID} hypervisorlaunchtype OFF </code></pre>
+<p>See this link:</p>
+<ul>
+<li><a href="http://community.zevenseas.com/Blogs/Akhilesh/Lists/Posts/Post.aspx?ID=9">http://community.zevenseas.com/Blogs/Akhilesh/Lists/Posts/Post.aspx?ID=9</a></li>
+<li><a href="http://derekgusoff.wordpress.com/2012/09/05/run-hyper-v-and-virtualbox-on-the-same-machine/">http://derekgusoff.wordpress.com/2012/09/05/run-hyper-v-and-virtualbox-on-the-same-machine/</a></li>
+</ul>
+<h2 id="vboxWin">Installing Windows On VirtualBox</h2>
+<p>In this section I describe how to install Windows in VirtualBox, and then Export and restore the appliance.</p>
+<p>In this process, I have three goals I want you to achieve:</p>
+<ul>
+<li>Enhance your understanding of virtual computing</li>
+<li>Learn to install virtual systems that you can experiment with throughout this course without compromising the set up of your home system. In particular, there are various cloud tools that you can install into a virtual OS, and hence get the chance to learn how they work.</li>
+<li>At least potentially, you can have a copy of an OS that you can take to school and use in class, and then carry it home with you for use on your home setup. This gives you a portable OS even if you don't have a laptop.</li>
+</ul>
+<p>When learning about virtual systems, Android is an excellent operating system to start with since it is small, and has very limited resource requirements. With practice, one can install, export, and restore an Android system in just a few minutes. On my system, I could easily complete the whole cycle in 15 minutes, probably much less. This means you can practice performing various exercises with a virtual machine in a relatively short time span.</p>
+<p>Though Android is stable and is built on top of Linux, it is still difficult to perform some routine operating system tasks on it without a deep knowledge of the Linux command line and architecture. As a result, once you have had a chance to learn the basics of Virtual computing using this small system, it is time to move on to more flexible tools. (I don't mean to imply that Android is a toy. You can do a lot of with it. But there are some tasks that are simpler to perform in more conventional operating systems.)</p>
+<p>Android is not the only small, low resource version of Linux. If you <a href="http://www.techradar.com/news/software/operating-systems/10-best-linux-distros-for-2011-704584">search the web</a>, you will find <a href="http://distrowatch.com/">various versions of Linux</a> designed to run on limited hardware. However, the popular, robust and VirtualBox-friendly Ubuntu distribution does have a very attractive set of minimum requirements that look <a href="https://help.ubuntu.com/11.10/installation-guide/i386/minimum-hardware-reqts.html">like this</a>:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Install Type</th>
+<th style="text-align: left;">RAM (minimal)</th>
+<th style="text-align: left;">RAM (recommended)</th>
+<th style="text-align: left;">Hard Drive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No desktop</td>
+<td style="text-align: left;">64 megabytes</td>
+<td style="text-align: left;">256 megabytes</td>
+<td style="text-align: left;">1 gigabyte</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">With Desktop</td>
+<td style="text-align: left;">64 megabytes</td>
+<td style="text-align: left;">512 megabytes</td>
+<td style="text-align: left;">55 gigabytes</td>
+</tr>
+</tbody>
+</table>
+<p>Most students should have machines powerful enough to run Ubuntu Linux in VirtualBox with relatively little pain. They can then use this OS to explore a wide range of cloud based tools and scenarios. So our goal is this: do the best you can with resource hungry, but powerful and easy to use Windows. Then, if you find it is to slow or clumsy on your system, also learn to use Linux for some of the tasks wel will perform in this course.</p>
+<h3 id="installing-windows">Installing Windows</h3>
+<p>If you have a fairly powerful machine, Windows runs well in VirtualBox. I recognize, however, that not everyone in class has a machine of sufficient power to make this a practical option. Nevertheless, I want you to try, and simply report back to me what you experienced. Remember that if you are running on an underpowered system, you may have considerably more luck with the Linux install.</p>
+<p><a href="images/VirtualBoxExportAndroid07.png"><img src="images/VirtualBoxExportAndroid07Smaller.png" alt="Vista in VirtualBox" /></a></p>
+<p><strong>Figure 07: Vista in VirtualBox Running on Windows 7. Click to enlarge.</strong></p>
+<p>On a warmed up custom $1000 desktop, I can boot to a VirtualBox Windows Vista Ultimate sign-in screen in about 50 seconds, and be working in a responsive desktop in about 70 seconds. That compares favorably with the time it would take my machine to boot into the operating system when it is installed on the bare metal. I know not everyone has similar hardware, but we must always look to the future, and if this capability is on (relatively cheap) high end machines today, it will be on many more machines within 2-5 years.</p>
+<p>Before installing Windows in VirtualBox, here are some issues you might want to keep in mind right from the start:</p>
+<ul>
+<li>Windows is proprietary product, and there are licensing issues. As students at BC you have access to copies of Windows that you can use as a Test OS. In particular, you might consider downloading the relatively low resource hungry Windows XP, though you will have more features if you use Vista or Windows 7. With Linux, you can create as many instances of the OS as you want, with Windows, you have to think carefully about licensing issues. One thing to keep in mind: it might be possible to use a 30-90 day trial copy of Windows. I don't know all the ins and outs of that process, but I've seen people use them for this purpose, and it can be just right for a virtual machine, as you often want them only for a short time.</li>
+<li>Secondly, and no less importantly, Windows goes through a huge, even massive, time consuming, process of updating itself. If you install from disk, it can easily take a day before your copy of -- for instance -- Vista is up to date. This means you should install Vista, update it, and then save your work to a thumb drive or CD and also export a virtual appliance, as described in Part I of this assignment. Back it up, so you only have to do the process once! <strong><em>Please note:</em></strong> <em>you can significantly reduce the time reqired to update a Microsoft OS by <a href="http://windows.microsoft.com/en-US/windows/downloads/service-packs">downloading service packs</a> and burning them to CD. You can then attach the drive to your virtual machine? (This works in hyper-v, but I haven't tried it yet in VirtualBox. You may have to burn an ISO and then attach the ISO?)</em></li>
+</ul>
+<p>Once you have Windows installed, you should export you appliance, as described above in Part I of this assignment. On my system, it took about 15 - 25 minutes to complete the export. I could then restore the system in about 3-5 minutes. Think about that for a minute. You can have a pristine, fresh install of Windows to play with in only 5 minutes. Use it, abuse it, when you are done, delete it. Then restore a new version in 5 minutes.</p>
+<p>It is worth emphasizing that this is the same technology that makes modern cloud computing possible. Big companies like Microsoft, Amazon and others can deploy entire operating systems to virtual machines in their clouds with the click of a button or the execution of a line of code. The whole process need only take a few minutes to complete. This makes it possible for them to cheaply and easily run a lucrative business selling access to virtual machines to people who need such resources.</p>
+<!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>        
+		<p>Copyright &copy; <a href="/charlie/index.html">Charlie Calvert</a> |
+		<a href="/charlie/contents.html">Site Overview</a> |
+		<a href="/charlie/development/index.html">Writing Code</a> |
+		<a href="/charlie/development/web/index.html">Web</a> |
+		<a href="/charlie/development/web/JavaScript/index.html">JavaScript</a> |
+		<a href="/charlie/books/index.html">My Books</a> </p>
+
+      </footer>
+
+    </div><!-- /.container -->
+</body>
+</html>
+
+
+

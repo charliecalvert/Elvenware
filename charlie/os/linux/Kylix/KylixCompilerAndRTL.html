@@ -1,0 +1,151 @@
+
+<HTML>
+<HEAD><TITLE>Compiler and RTL</TITLE>
+<script language="JavaScript" src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+<!--#include virtual="../../scripts/HeaderInfo.html" -->
+</HEAD>
+<BODY>
+<H1>Kylix Compiler and RTL </H1>
+
+
+<H2>Overview </H2>
+<UL>
+<LI>Command-line tools - what�s new </LI>
+<LI>DCC is a native Linux executable </LI>
+<LI>All-new portable code inline assembler </LI>
+<LI>Supports MMX, Pentium pro, SIMD, 10 byte data structure </LI>
+<LI>DCC makes native executables (ELF format, x86) </LI>
+<LI>Can use .O files with restrictions (no C++) </LI>
+<LI>Command-line tools - what�s out </LI>
+<LI>TASM and tools </LI>
+<LI>Borland make (use GNU make) </LI>
+<LI>brcc (resource script compiler) </LI>
+<LI>We�ll provide a way to get binary data and strings into executables </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Command-line tools � what�s different </LI>
+<LI>Only '-' for command-line switches </LI>
+<LI>Colon ':' instead of semicolon ';' for path separator </LI>
+<LI>�;� Is a valid character for Linux file names </LI>
+<LI>Resources </LI>
+<LI>Restrictions on windows resource "rip and replace� </LI>
+<LI>Resource section is a reserved size, you can replace data </LI>
+<LI>Can�t change the name or add a resource name </LI>
+<LI>No introspection (enumeration and discovery) like in windows </LI>
+<LI>We�ll use ELF format extensions � spec allows new segments </LI>
+<LI>No resource types </LI>
+<LI>Editing will not be straightforward </LI>
+<LI>Position independent code (PIC) </LI>
+<LI>Linux loader - all code is relocatable (uses EBX) </LI>
+<LI>Shared objects must use PIC </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Language syntax - what�s new </LI>
+<LI>Expression evaluation in conditional defines </LI>
+<LI>{$IF defined(SomeSymbol) and (SomeConstant < 11.0)} </LI>
+<LI>And, or, XOR, � </LI>
+<LI>Libraries / packages compile to shared object (.So) </LI>
+<LI>DCU for executables </LI>
+<LI>DPU for PIC code - shared objects </LI>
+<LI>Unit, program, library keywords </LI>
+<LI>Case sensitive file name - must match name after keyword </LI>
+<LI>Conditional LINUX symbol is defined </LI>
+<LI>Assembler � VMToffset, DMToffset </LI>
+<LI>Mov eax, VMToffset(TMyObject virtual method) </LI>
+<LI>Moves the offset # - VMT tables may move around </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Language syntax - what�s out </LI>
+<LI>Variables on absolute addresses </LI>
+<LI>var X: integer absolute $1234; </LI>
+<LI>You can do absolute variables on another variable </LI>
+<LI>Conditional symbol WIN32 is not defined </LI>
+<LI>IFDEF style </LI>
+<LI>Use $IFDEF WIN32 and $IFDEF LINUX </LI>
+<LI>Don�t use $ELSE </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Language syntax </LI>
+<LI>What's different (still under consideration) </LI>
+<LI>stdcall mapped to cdecl </LI>
+<LI>No impact on Pascal code </LI>
+<LI>Assembler code must clean up calls to cdecl functions </LI>
+<LI>safecall mapped to cdecl </LI>
+<LI>Primarily used on windows to handle exceptions </LI>
+<LI>Turns exceptions into a function result </LI>
+<LI>Still of some use in RPC calls � use proxies and stubs </LI>
+<LI>Will affect Pascal code � we�ll try to issue a warning </LI>
+<LI>Both will have an impact on assembler code </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Run time library </LI>
+<LI>What's new </LI>
+<LI>Portable variants � not the Windows variant </LI>
+<LI>Includes support for variant arrays and safe arrays </LI>
+<LI>Support for registering custom variant data types </LI>
+<LI>Data coercion, data copying, operator operations, method invocation </LI>
+<LI>Test case already implemented � complex numbers </LI>
+<LI>WideStrings are reference counted </LI>
+<LI>What's out </LI>
+<LI>Units such as ComObj, ComServ, ActiveX, windows </LI>
+<LI>Safecall exceptions </LI>
+<LI>Raiselastwin32err, OleCheck, win32check </LI>
+<LI>ExpandUNCFileName (\\server\filename) </LI>
+<LI>Drive letter functions � extractfiledrive() </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<ul>
+<LI>Run time library - what�s different </LI>
+<LI>WideChar is still 2 bytes (Linux wchar_t is 4 bytes) </LI>
+<LI>Linux system calls don�t use WideChars � they use UTF-8 </LI>
+<LI>AnsiStrings encoded as UTF-8 </LI>
+<LI>On Windows AnsiStrings are multi-byte defined by the locale </LI>
+<LI>ResourceStrings as UTF-8 in exe file </LI>
+<LI>IInterface replaces IUnknown as base type </LI>
+<LI>Use IUnknown for windows interfaces </LI>
+<LI>Use IInterface for application interfaces </LI>
+<LI>TResourceStream � pulls from ELF executable </LI>
+<LI>Component streaming depends on component differences </LI>
+<LI>TThreads </LI>
+<LI>OS dependent </LI>
+<LI>Linux distribution differences </LI>
+</UL>
+
+<H2>Kylix Compiler and RTL </H2>
+<UL>
+<LI>Run time library - what�s different </LI>
+<LI>File system </LI>
+<LI>Filename case sensitivity </LI>
+<LI>Uses clause, your code, RTL calls </LI>
+<LI>File name extensions (.Pas, .dpr, .dfm, .dcu, �) </LI>
+<LI>Classes, SysUtils, � </LI>
+<LI>File times in Unix format is different </LI>
+<LI>Windows packed data 1980 </LI>
+<LI>Linux # of seconds since 1970 </LI>
+<LI>No drive letters (DiskFree, DiskSize, ExtractFileDrive) </LI>
+<LI>Path name separator is '/' not '\' </LI>
+<LI>New PathSeparator constant, IsPathDelimiter, IncludeTrailingBackslash, ExtractFilePath, etc will work </LI>
+</UL>
+
+<H2>Demos </H2>
+<ul>
+<LI>Text book example </LI>
+<LI>X Windows example </LI>
+<LI>Simple CLX </LI>
+<LI>Questions and (Hopefully) Answers </LI>
+<LI>Introduction to CLX </LI>
+</UL>
+</BODY>
+</HTML>
+

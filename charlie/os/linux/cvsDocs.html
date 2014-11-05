@@ -1,0 +1,220 @@
+<HTML>
+<HEAD>
+<TITLE>Using CVS</TITLE>
+<meta name="Description" content="CVS Information for programmers .">
+<meta name="Keywords" content="CVS, Delphi,Programming, Pascal, Unleashed,Teach,Yourself,95,Calvert,Charlie,Code,Compile,Kylix,Charles">
+<script language="JavaScript" src="/charlie/libs/scripts/MeyerStyleSwitch.js" type="text/javascript"></script>  
+<!--#include virtual="../../scripts/HeaderInfo.html" -->
+</HEAD>
+<BODY>
+
+<A NAME="top"></a><H1>CVS Notes</H1>
+
+<img src="../../../images/cvs.gif" alt="" width="110" height="83" border="0">
+
+<P>Some introductory notes on cvs are here:</P>
+
+<A HREF="http://www.elvenware.com/charlie/linux/LinuxNFSSambaCVS.html#cvs">http://www.elvenware.com/charlie/linux/LinuxNFSSambaCVS.html#cvs</A>
+
+<P>The cvs home page is here:</P>
+<UL>
+<LI><A HREF="http://cvshome.org/">http://cvshome.org/</A> </LI>
+<LI>Linux: <A HREF="http://cvshome.org/dev/codelinux.html">http://cvshome.org/dev/codelinux.html</A> </LI>
+<LI>Windows: <A HREF="http://cvshome.org/dev/codewindow.html">http://cvshome.org/dev/codewindow.html</A> </LI>
+</UL>
+
+<P>A good book on CVS is <A HREF="http://cvsbook.red-bean.com/">here</A>.</P>
+<P>CVS Tools</P>                     
+<UL>
+<LI><A HREF="http://www.loria.fr/cgi-bin/molli/wilma.cgi/rel">http://www.loria.fr/cgi-bin/molli/wilma.cgi/rel</A> </LI>
+</UL>
+
+<P>Windows front ends:</P>
+<UL>
+<LI>TKCVS: <A HREF="http://cvshome.org/dev/addontkcvs.html">http://cvshome.org/dev/addontkcvs.html</A> </LI>
+<LI>JCVS: <A HREF="http://cvshome.org/dev/addonjcvs.html">http://cvshome.org/dev/addonjcvs.html</A> </LI>
+<LI>WinCVS: <A HREF="http://cvshome.org/dev/addonmaccvs.html">http://cvshome.org/dev/addonmaccvs.html</A> </LI>
+</UL>
+
+<P>Docs</P>
+<UL>
+<LI><A HREF="http://www.loria.fr/cgi-bin/molli/wilma.cgi/doc">http://www.loria.fr/cgi-bin/molli/wilma.cgi/doc</A> </LI>
+<LI>Faq-o-matic<A HREF="http://www.loria.fr/~molli/fom-serve/cache/1.html">http://www.loria.fr/~molli/fom-serve/cache/1.html</A> </LI>
+</UL>
+
+<H3>Logging into a CVS PServer</H3>
+
+<P>It is possible you will have to sign on to cvs on the server once before you 
+start.  If so, here is the command: </P> 
+
+<PRE>cvs -d :pserver:UserName@Server:/usr/local/cvsrep login </PRE>
+
+<P>You will be prompted for your password on xwin. If all goes well, the command will return with no comment. No "Success," or anything else. You are just returned to the prompt.</P>
+
+<H3>Creating a CVS Project</H3>
+
+<PRE>cvs import -m "initial import into cvs" cacheguide ccalvert start</PRE>
+
+
+<H3>Checking out a CVS Project</H3>
+
+<P>The command to get a project from cvs would be: </P> 
+
+<PRE>cvs checkout MediaPlayer </PRE>
+
+<P>You want to issue the command from the directory beneath where you want 
+your project to reside.  For instance, if your project were called MediaPlayer and
+it was in the c:\src directory, then issuing the command from that 
+location would put the files in the c:\src\MediaPlayer directory.  </P> 
+
+ 
+<P>You might to spend some time making sure that all the files have regular 
+capitalization.  That is, there are no files called MYFILE.PAS or 
+myfile.PAS or MYFILE.pas, they should all follow standard camelcaps MyFile.pas, 
+or else they should all be in small letters.  Check in particular for one you 
+have called ServerMAIN.pas, and a few that have .PAS as extensions.  In 
+general, you should probably merge your current content into the files in 
+the project, that way the caps that I have established should be 
+preserved.  In other words, don't just copy your files over mine.  It 
+would definitely help if you could set things up so that these 
+capitalizations are followed when you work with the project.  If you get 
+them set up once, correctly, then it should continue to follow them from 
+there on out.  If you add new files to the project, it would help to get 
+the caps right before adding them to CVS.  Probably best to keep the 
+project off Windows 98 during development, as Win98 is bad about caps.  
+But it you get it set up right once, then do the checkout to Win98, then 
+it should be okay.  </P> 
+
+
+<H3>Committing your work</H3>
+
+<P>Here is the command to commit your work at the end of the day: </P> 
+
+<PRE>cvs commit -m "Here is my work for today" </PRE>
+
+
+<H3>Getting Updates</H3>
+
+<P>Here is the command to get updates that I might have added, or to 
+update one machine if you have done a commit from another machine: </P> 
+
+<PRE>cvs update</PRE>
+
+<P>P means the file was patched, that is, it was updated with new code from the repository.</P>
+<P>M means the file has been modified on your side and needs to be committed.</P>
+<P>U means the file wasn't on your side but was copied (updated) from the repository.</P>
+<P>C means a conflict was detected.</P>
+
+<P><A HREF="http://www-es.fernuni-hagen.de/cgi-bin/info2html?(cvs)update%20output">update output</A></P>
+
+                                     
+<H3>Adding Files</H3>
+
+<P>Here is the command to add a file:</P> 
+
+<PRE>cvs add MyFile.pas </PRE>
+
+
+<H3>Removing Files</H3>
+
+<P>Here is the command to remove a file: </P> 
+
+<PRE>cvs remove MyFile.pas </PRE>
+
+
+<H3>Getting the Status of a File or Repository</H3>
+
+<P>Here is the command to check on the status of a file: </P> 
+
+<PRE>cvs status MyFile.pas</PRE>
+
+
+<p>Simple go to the root of the project and type cvs status &gt; foo.txt to get the 
+status on an entire repository. Wne you are done, open up the text file in and editory 
+and browse it. Particularly browse the top.</p>
+
+
+<H3>Making a file Binary after its been Checked In</H3>
+
+<P>Here is the command to make a file binary if it is not listed as binary 
+in the repository: </P> 
+
+<PRE>cvs admin -kb MyFile.gif </PRE>
+
+<P>I have made all the files text files except for those with an res, ico, 
+gif or bmp extension.  They are all binary.  </P> 
+
+<P>You can go to the cvswrappers file in the CVSROOT directory on the
+server and specify all the files that you want to be binary by default.</P>
+
+<P>The DFM files are all text.  One file in our project, called About.dfm, 
+was a binary dfm, I converted it to text before putting it in the 
+repository.  To check if the file is text or not, right click on it in the 
+IDE, and make sure Save as text is checked.  </P> 
+
+<P>I did not put any of the cfg, kof, dsk, etc, files in the repository.  
+I did put dpr, pas, dfm, res, and any bitmaps in the repository.  </P> 
+
+
+<H3>Automating CVS from the Command Line</H3>
+
+<P>Here is the batch file I run before accessing the project: </P> 
+
+<PRE>
+@echo off
+d:
+cd "D:\srcpas\middleearth\elves\multimedia\mediaPlayer"
+set HOME=C:\Documents and Settings\administrator
+set HOMEPATH=\Documents and Settings\administrator
+set HOMEDRIVE=d:
+set USER=charlie
+set CVSROOT=:pserver:charlie@MyServer:/usr/local/cvsrep
+c:\utilities\tcl\bin\wish83.exe c:\bin\tkcvs.tcl
+</PRE>
+
+<P>The last line depends on TKCVS, a visual front end for CVS. You 
+may or may not find it helpful. Additional information on TKCVS is
+provided at the link found at the <A HREF="#top">top</A> of this article. </P> 
+
+ 
+<H3>Initialising a CVS reposity for PSERVER</H3>
+
+<P>If you have installed CVS, you still have to initialize the 
+directory from which you want to serve files:</P>
+
+<PRE>cvs -d /usr/local/cvsrep init</PRE>
+
+<P>Though its probably there already, make sure /etc/services contains: </P>
+
+<Pre>cvspserver 2401/tcp </Pre> 
+
+<P>Add this to /etc/xinetd.d, in a file called cvs (/etc/xinetd.d/cvs):</P>
+
+<PRE>
+service cvspserver
+{
+        disable = no
+        socket_type     = stream
+        protocol        = tcp
+        wait            = no
+        user            = root
+        server          = /usr/bin/cvs
+        server_args     = --allow-root=/home/development/cvsfred -f pserver
+}
+</PRE>
+
+<PRE>
+> repository (i.e. commit, tag, etc.) gives the "can't chdir..." error
+
+The problem is you forgot the -f from this line xinetd:
+
+server_args     = --allow-root=/home/development/cvsfred -f pserver
+</PRE>                                                      
+
+</BODY>
+</HTML>
+ent/cvsfred -f pserver
+</PRE>                                                      
+
+</BODY>
+</HTML>

@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html dir="ltr">
+
+<!-- #BeginTemplate "../../Elvenware.dwt" -->
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<!-- #BeginEditable "doctitle" -->
+
+<title>Elvenware Windows FAQ</title>
+
+<!-- #EndEditable -->
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport" />
+<link href="/charlie/libs/css/style2.css" rel="stylesheet" title="style2" type="text/css" />
+<link href="/charlie/libs/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="/charlie/libs/scripts/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+<!-- #BeginEditable "docScripts" -->
+<!-- #EndEditable -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2806409-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+<div id="container">
+	<header>
+		<div class="navButton" onclick="elvenware.toggleMenu()">Toggle Menu</div>
+		<h1>Charlie Calvert on Elvenware</h1>
+		<h2>Writing Code and Prose on Computers</h2>
+	</header>
+	<nav>
+		<h2>Menu</h2>
+		<div id="accordion00">
+		<h2 class="navSection01">Core Code</h2>
+			<ul>
+				<li><a href="../../development/index.html">Strongly Typed</a></li>
+				<li><a href="../../development/web/index.html">Web &amp; Scripts</a></li>
+				<li><a href="../../development/cloud/index.shtml">Cloud</a></li>
+			</ul>
+		
+			<h2 class="navSection02">OS and Tools</h2>
+			<ul>
+				<li><a href="../index.html">OS</a></li>
+				<li><a href="../../development/database/index.html">Database</a></li>
+				<li><a href="../../books/index.html">My Writing</a></li>
+			</ul>
+			
+		
+			<h2 class="navSection03">Art</h2>
+			<ul>
+				<li><a href="../../Art/index.html">Poems &amp; Photos</a></li>
+				<li><a href="../../books/reading/index.html">Book Reviews</a></li>
+				<li><a href="../../spirit/index.html">Spiritual</a></li>
+			</ul>
+			<h2 class="navSection04">Links</h2>
+			<ul>
+				<li><a href="../../links.html">My Links</a></li>
+				<li><a href="http://www.falafel.com/">Falafel</a></li>
+				<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+			</ul>
+		</div>
+	</nav>
+	<article>
+		<figure>
+			<img alt="Elvenware" src="../../images/elvenwarelogo.png" /></figure>
+		<!-- #BeginEditable "body" -->
+
+	
+	<h2 id="faq">Windows FAQ</h2>
+	
+		<ol>
+			<li><a href="#permissions">Permissions to access a file or directory</a></li>
+			<li><a href="#hide">Hiding and revealing file extensions for known 
+			file types</a></li>
+			<li><a href="#cmdPrompt">Open a command prompt from the Windows 
+			Explorer</a></li>
+			<li><a href="#environment">Set the Path or Environment Variables</a></li>
+			<li><a href="#passTime">Set Password Timeout on Windows Server</a></li>
+			<li><a href="#win8ShortCuts">Windows 8 Short Cuts</a></li>
+			<li><a href="#batch">Run a Batch File</a></li>
+            <li><a href="#runBatch">Run Batch File from NotePad++</a></li>
+			<li><a href="#secureContent">Turn off "Only Secure Content is 
+			Displayed" in IE</a></li>
+		</ol>
+		<h2 id="permissions">Permissions to Access a File or Directory</h2>
+
+		<p>Suppose you want access to the Logs folder. Here is what to do:</p>
+
+		<p>Sign on to your machine with Admin priviliges, or start a copy of the 
+		Windows Explorer with Admin privileges by right clicking on it and 
+		choosing "Run as Administrator." Then go the logs folder: 
+		c:\inetpub\logs. Right click on the Advanced Logging folder and choose 
+		Properties. Turn to the Security page in the AdvancedLogs Properties 
+		dialog that launched when you chose Properties. Choose Edit and the 
+		press the Add button and add yourself in the "Enter the object names to 
+		select" input box. Choose Check Names to be sure all is working 
+		correctly. Close all the dialogs, and you should have the rights to read 
+		files in that directory. You can give yourself editing (modify) rights, 
+		but you usually don't need those when working with Log files.</p>
+
+		<p>If the system won't let go of a document or text file that you have opened in an editor or 
+ elsewhere, there is a SysInternals tool called Process Explorer that will break the connection and 
+ free the resource: </p>
+
+ 	   <ul>
+		   <li><a href="http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx">SysInternals 
+		   Web Site Process Explorer</a> </li>
+		   <li><a href="http://technet.microsoft.com/en-us/library/dd799237(WS.10).aspx">Windows 7: 
+		   The IT Pro at Home: Tips and Tricks</a></li>
+		   <li><a href="http://windows.microsoft.com/en-US/windows/explore/20-pc-shortcuts">20 Essential PC Shortcuts</a></li>
+		   <li><a href="http://msdn.microsoft.com/en-us/magazine/cc982153.aspx">File Permissions</a></li>
+		</ul>
+		
+		<h2 id="hide">Stop hiding File Extensions</h2>
+		<p>It is important for developers to be aware of the extensions for 
+		files. For instance, we don't want to name a file index.html, only to 
+		find out that Windows is hiding it's true name, which can be, in a worst 
+		case but very common scenario: index.html.txt. Most of you probably know 
+		this, but here is how to stop hiding file extensions for know types on 
+		Windows.</p>
+		<p>
+			Open the Windows Explorer, press <strong>Alt</strong> to expose the 
+			menu, and then choose <strong>Tools | Folder Options | View</strong> and uncheck
+			<strong>Hide extensions for known file types</strong>. 
+			Then press the <strong>Apply to Folders</strong> button so that all 
+			the directories on the machine are listed the same way.</p>
+		<p>1) Open Windows Explorer</p>
+       <p>2) Press the Alt key to reveal the menu</p>
+        <p>3) Choose Tools | Folder Options</p>
+        <p>4) Turn to the View Page</p>
+		<p>5) Turn off "Hide extensions for known file types."</p>
+		<h2 id="cmdPrompt">Open a Command Prompt from the Windows Explorer</h2>
+		<p>In Windows XP or later, just go to the Address bar (Ctrl-D) and type 
+		in the word CMD. Hit enter and it will open the command prompt in the 
+		current directory.</p>
+		<h2 id="environment">Set the Path or Other Environment Variable</h2>
+
+		<p>
+		Select:</p>
+		<ul>
+			<li>
+			Control Panel\System and Security\System</li>
+			<li>
+			Advanced System Settings.</li>
+		</ul>
+
+		<p>
+		Click the Environment Variables button near the bottom of the System 
+		Properties dialog. You will see the Environment Variables dialog. From 
+		here you can edit existing environment variables and create new 
+		variables. In the screen shot below, note the local PATH variable for 
+		the user only, and the PATH variable for everyone who uses the computer. 
+		Even if you don't have the rights to set the PATH for everyone on a 
+		machine, you should have the rights to set your own path. 
+		Note also the JAVA_HOME environment variable.</p>
+		<p>
+		<img alt="Setting environment variables" height="437" src="images/Environment02.png" style="width: 394px" /></p>
+		<p>
+		<strong>Figure XX: Setting Environment Variables</strong></p>
+		<p>
+		<img alt="Setting the Java_HOME environment variable." height="154" src="images/Environment01.png" style="width: 357px" /></p>
+		<p><strong>Figure X1: Setting the Java_HOME environment variable.</strong></p>
+
+		<p>You can set environment variables with PowerShell:</p>
+
+		<pre class="code">[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "UserName")</pre>
+		<h2 id="passTime">Password Timeout on Windows Server</h2>
+		<p>Go here and set the set <strong>Maximum password age</strong>.</p>
+		<p>Start | Administrative Tools | Local Security Policy | Account Policies | Password Policy</p>
+		<p>If you set it to 0, then it will never time out.</p>
+		<h2 id="win8ShortCuts">Windows 8 Shortcuts</h2>
+		<p>To get to the start menu: I press the Windows key. I'm there 
+		instantly. I want to get back to the desktop. I press the windows key. 
+		(Alternately Windows + D). I'm back at the desktop instantly. Very fast, 
+		very simple.</p>
+		<p>The fastest way to completely pause and restart your machine is to 
+		put it to sleep. With a laptop, just close the lid and it goes to sleep, 
+		just as it did in Windows 7. Then when you want to restart, just open 
+		the lid and (optionally) type in your password. That is exactly the same 
+		as on Windows 7. Alternately, just press Windows + L, and walk around 
+		with your laptop lid open, then you don't have to sleep and wake, though 
+		that takes less that 5 seconds on my machine. There are options to 
+		change whether a computer sleeps when you close the lid.</p>
+		<p class="note">NOTE: When I am on Ubuntu Unity, I get to the Start 
+		screen in exactly the same way I do in Windows 8: I press the Window 
+		key. </p>
+		<p>As for run: just press Windows and click on or type the name of your 
+		app. Either way, the app starts running. Alternately, press Windows + R 
+		to start the old Run dialog from Windows 7.</p>
+		<p>Starting the control panel and related features: The simplest way to 
+		do most of these tasks is just to press Windows + X. No simple way to 
+		describe what that does, but try it: it gets you instant access to the 
+		Control Panel, Task Manager, File Explorer, Search, Disk Management, 
+		Device Manager, Power Options, etc.</p>
+		<p><a href="http://windows.microsoft.com/en-US/windows-8/new-keyboard-shortcuts#1TC=t1">http://windows.microsoft.com/en-US/windows-8/new-keyboard-shortcuts#1TC=t1</a></p>
+        
+        <h2 id="batch">Run a Batch File</h2>
+        
+		<p>You can also always run a batch file from a command window. Click 
+		on the Start button, then type CMD and press enter. A command 
+		window will open. Then if the batch file you are working with is on 
+		the current path, you can just run it by typing its name. If it is 
+		not on the path, then you have to navigate to the directory where 
+		the command file exists.</p>
+
+		<p>It is sometimes helpful to use the Windows explorer to navigate 
+		to the directory where the file exists. Then open the command 
+		window by replacing the path information in the address bar 
+		with the word "CMD" and pressing enter. You will then open a 
+		command window in the directory you were viewing in the explorer.</p>
+        
+        <h2 id="runBatch">Run a Batch File from NotePad++</h2>
+        
+		<p>In Windows, when I create a batch file, I am usually working in 
+		NotePad++. It would be simplest if I could edit the batch file, and 
+		run it, directly from inside NotePad++. Fortunately, it is easy to 
+		run batch files without leaving the NotePad++ editor.</p>
+        
+        <ul>
+            <li>Install the NppExec plugin</li>
+            <li>Choose <strong>Plugins | Plugin Manager | Show Plugin Manager</strong></li>
+            <li>Install the <strong>NppExec</strong> plugin, as shown in Figure 0X. NotePad++ will restart</li>
+            <li>Press F6 to launch <strong>NppExec</strong>.</li>
+            <li>Type in this command &quot;$(FULL_CURRENT_PATH)&quot;</li>
+        </ul>
+		<p><img src="images/NppRunBatch.png" class="leaveAlone" alt="Run Batch file" /></p>
+        <p><img src="images/NppRunBatch02.png" class="leaveAlone" alt="Running Batch file" /></p>
+		<h2 id="secureContent">Turn off the "Only Secure Content is Displayed" Warning in IE</h2>
+		<p>
+		In my case, at least, I tend to get this warning because I am visiting a 
+		site that has HTTPS (secure HTTP) enabled, yet one of the HTML files on 
+		the site links in a script using HTTP rather than HTTPS. Since I 
+		frequently use CDN to link in jQuery via HTTP, I don't see this as a big 
+		security risk, and like to turn it off for selected sites that I trust, 
+		and in particular for sites that I maintain. This type of linking is 
+		called "mixed content" because there is a mixture of HTTP and HTTPS 
+		being used on the same site. Microsoft fears that this means that the 
+		HTTPS site you are visiting is not as secure as it could be.</p>
+		<p>
+		To turn off the warning, do two things:</p>
+		<ul>
+			<li>Add the web site that is giving the warning to your trusted zone.&nbsp;</li>
+			<li>In the trusted zone, enable mixed content.</li>
+		</ul>
+		<p>More specifically, in Internet Explorer,</p>
+		<ul>
+			<li>On the upper right, choose <strong>Gear 
+			|&nbsp;Internet Options | Security</strong>. (Gear is the icon 
+			that looks like a gear.)</li>
+			
+			<li>Select&nbsp;<strong>Trusted 
+			Sites</strong>, click the&nbsp;sites&nbsp;button. 
+			Make sure MyBCC or whatever site you want to use is one of the 
+			trusted sites.</li>
+			
+			<li>Select <strong>Custom level</strong></li>
+			
+			<li>Find the <strong>Miscellaneous</strong> section 
+			and set <strong>Display mixed content&nbsp;</strong>to
+			<strong>enabled.</strong></li>
+		</ul>
+		<p>&nbsp;</p>
+
+		<!-- #EndEditable -->
+	</article>
+	<footer>
+
+		<p>Copyright &copy; <a href="../../index.html">Charlie Calvert</a> |
+		<a href="../../index.html">Elvenware Home</a> |
+		<a href="../../development/index.html">Writing Code</a> |
+		<a href="../../development/delphi/index.html">Delphi</a> |
+		<a href="../../development/csharp/index.html">CSharp</a> |
+		<a href="../../books/index.html">My Books</a> </p>
+	</footer>
+</div>
+
+</body>
+
+<!-- #EndTemplate -->
+
+</html>

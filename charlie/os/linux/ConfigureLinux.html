@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>ConfigureLinux</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/charlie/images/favicon.png">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+	<link href="/charlie/libs/css/BootstrapIndex.css" rel="stylesheet" type="text/css" />
+	<!-- Latest compiled and minified JavaScript - Move to bottom of body element -->
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2806409-2']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+
+
+
+	<!-- removed  navbar-fixed-top -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a class="navbar-brand" href="/charlie/index.html">Elvenware</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/charlie/index.html">Home</a></li>
+					<li><a href="/charlie/contents.html">About</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Core Code</li>
+							<li><a href="/charlie/development/index.html">Strongly Typed</a></li>
+							<li><a href="/charlie/development/web/index.html">Web &amp; Scripts</a></li>
+							<li><a href="/charlie/development/cloud/index.shtml">Cloud</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">OS and Tools</li>
+							<li><a href="/charlie/os/index.html">OS</a></li>
+							<li><a href="/charlie/development/database/index.html">Database</a></li>
+							<li><a href="/charlie/books/index.html">My Writing</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Art</li>
+							<li><a href="/charlie/Art/index.html">Poems &amp; Photos</a></li>
+							<li><a href="/charlie/books/reading/index.html">Book Reviews</a></li>
+							<li><a href="/charlie/spirit/index.html">Spiritual</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Links</li>
+							<li><a href="/charlie/links.html">My Links</a></li>
+							<li><a href="http://www.github.com/charliecalvert">GitHub</a></li>
+							<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<figure><img alt="Elvenware" src="/charlie/images/elvenwarelogo.png" /></figure>
+<h2>Table of Contents</h2>
+<ul class="elfTocHeading">
+	<li><a href='#configure-linux'>Configure Linux</a></li>
+	<li><a href='#update-the-machine'>Update the Machine</a></li>
+	<li><a href='#install-git'>Install Git</a></li>
+	<li><a href='#install-node'>Install Node</a></li>
+	<li><a href='#install-lamp'>Install Lamp</a></li>
+	<li><a href='#install-mongodb'>Install MongoDb</a></li>
+	<li><a href='#install-ssh'>Install SSH</a></li>
+	<li><a href='#install-oraclesun-java'>Install Oracle/Sun Java</a></li>
+</ul>
+<h1 id="configure-linux">Configure Linux</h1>
+<p>We frequently need to configure an Ubuntu flavored Linux box from scratch. Your instance might be:</p>
+<ul>
+<li>Running on hardware</li>
+<li>Running in VirtualBox or VmWare</li>
+<li>Running in EC2</li>
+<li>Running somewhere else.</li>
+</ul>
+<p>In all cases, you might find the following information useful.</p>
+<p>Note that this information applies to most varieties of Ubuntu, including:</p>
+<ul>
+<li>Ubuntu Desktop</li>
+<li>Ubuntu Server</li>
+<li>Ubuntu Minimal</li>
+<li>Lubuntu</li>
+<li>And to a large degree, even the Ubuntu flavored Mint releases.</li>
+</ul>
+<h1 id="update-the-machine">Update the Machine</h1>
+<p>Our first job on a new install, and one that you should perform regularly after the install, is updating the OS. It is possible to have this done automatically, and in the Desktop versions there are tools to do it through the GUI, but I frequently do it by hand from the command prompt. All you need do is issue the following two commands.</p>
+<pre class="code"><code>sudo apt-get update
+sudo apt-get upgrade</code></pre>
+<p>The process listed above is simple to perform, and usually completes in only a few minutes or less.</p>
+<p>An upgrade from on release to another, takes longer. For instance, moving from Ubuntu 13.10 to 14.04 takes a long time. That is natural, since it is a more complex process. It would be like upgrading from Windows Vista to Windows 8. Only without the cost, and usually without the hastle. Please note that on slow machines an upgrade from one release to another release can take several hours. Nevertheless, if you want to update from one version of the distro to the next version, then use this command:</p>
+<pre class="code"><code>do-release-upgrade</code></pre>
+<h2 id="install-git">Install Git</h2>
+<p>The command is simple:</p>
+<pre><code>sudo apt-get install git</code></pre>
+<p>Then create a directory called Git:</p>
+<pre><code>cd
+mkdir Git
+cd Git</code></pre>
+<p>If you are one of my students, you might want to check out a read only copy of JsObjects:</p>
+<pre><code>git clone git://github.com/charliecalvert/JsObjects.git</code></pre>
+<h2 id="install-node">Install Node</h2>
+<p>The explanation is found here:</p>
+<ul>
+<li><a href="http://www.elvenware.com/charlie/development/web/JavaScript/NodeJs.html#node">Node on Elvenware</a></li>
+</ul>
+<h2 id="install-lamp">Install Lamp</h2>
+<p>The explanation is found here:</p>
+<ul>
+<li><a href="http://www.elvenware.com/charlie/development/database/mysql/MySql.html#installOnLinux">Lamp Install on Elvenware</a></li>
+</ul>
+<h2 id="install-mongodb">Install MongoDb</h2>
+<p>The explanation is found here:</p>
+<ul>
+<li><a href="http://www.elvenware.com/charlie/development/database/NoSql/MongoDb.html#install">MongoDb on Elvenware</a></li>
+</ul>
+<h2 id="install-ssh">Install SSH</h2>
+<p>On EC2, SSH is already installed. But on a fresh Ubuntu install, the steps are simple:</p>
+<pre class="code"><code>apt-get install ssh</code></pre>
+<p>And then create a key pair for yourself by following the instructions found here:</p>
+<ul>
+<li><a href="http://www.elvenware.com/charlie/development/cloud/SshFtpsPutty.html#sshKeys">Key pair creation on Elvenware</a></li>
+</ul>
+<p>Here is how to SSH to a remote machine:</p>
+<pre class="code"><code>ssh &lt;userName&gt;@&lt;theServerYouWantToConnectTo&gt;</code></pre>
+<p>For instance:</p>
+<pre class="code"><code>ssh ubuntu@192.168.1.23</code></pre>
+<p>This is an advanced trick, and not one that you necessarily want to use. You can use <strong>ssh-copy-id</strong> to install your public key in the <strong>authorized_keys</strong> file on a remote machine to which you already have access:</p>
+<pre class="code"><code>ssh-copy-id &lt;userName&gt;@&lt;theServerYouWantToConnectTo&gt;</code></pre>
+<p>On the server edit /etc/ssh/sshd_config and set Password Authentication to no.</p>
+<h2 id="install-oraclesun-java">Install Oracle/Sun Java</h2>
+<p>Java gets installed in the <strong>/usr/lib/jvm</strong> directory.</p>
+<p>The new improved way:</p>
+<pre><code>sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer</code></pre>
+<p>And you can test it like this:</p>
+<pre><code>java -version</code></pre>
+<p>The reference for the above is <a href="http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html">here</a>.</p>
+<p>The old, now obsolete way to install Java:</p>
+<pre class="code"><code>sudo apt-add-repository ppa:flexiondotorg/java
+sudo apt-get update
+sudo apt-get install sun-java6-jdk sun-java6-plugin
+sudo update-alternatives --config java</code></pre>
+<!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>        
+		<p>Copyright &copy; <a href="/charlie/index.html">Charlie Calvert</a> |
+		<a href="/charlie/contents.html">Site Overview</a> |
+		<a href="/charlie/development/index.html">Writing Code</a> |
+		<a href="/charlie/development/web/index.html">Web</a> |
+		<a href="/charlie/development/web/JavaScript/index.html">JavaScript</a> |
+		<a href="/charlie/books/index.html">My Books</a> </p>
+
+      </footer>
+
+    </div><!-- /.container -->
+</body>
+</html>
+
+
+

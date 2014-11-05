@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+	<meta charset="utf-8" />
+	<title>AndroidBasics</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/charlie/images/favicon.png">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+	<link href="/charlie/libs/css/BootstrapIndex.css" rel="stylesheet" type="text/css" />
+	<!-- Latest compiled and minified JavaScript - Move to bottom of body element -->
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="/charlie/libs/scripts/elvenware.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2806409-2']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+
+
+
+	<!-- removed  navbar-fixed-top -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+				<a class="navbar-brand" href="/charlie/index.html">Elvenware</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/charlie/index.html">Home</a></li>
+					<li><a href="/charlie/contents.html">About</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Core Code</li>
+							<li><a href="/charlie/development/index.html">Strongly Typed</a></li>
+							<li><a href="/charlie/development/web/index.html">Web &amp; Scripts</a></li>
+							<li><a href="/charlie/development/cloud/index.shtml">Cloud</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">OS and Tools</li>
+							<li><a href="/charlie/os/index.html">OS</a></li>
+							<li><a href="/charlie/development/database/index.html">Database</a></li>
+							<li><a href="/charlie/books/index.html">My Writing</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Art</li>
+							<li><a href="/charlie/Art/index.html">Poems &amp; Photos</a></li>
+							<li><a href="/charlie/books/reading/index.html">Book Reviews</a></li>
+							<li><a href="/charlie/spirit/index.html">Spiritual</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Links</li>
+							<li><a href="/charlie/links.html">My Links</a></li>
+							<li><a href="http://www.github.com/charliecalvert">GitHub</a></li>
+							<li><a href="http://sourceforge.net/projects/elvenware/">Sourceforge</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="starter-template">
+			<figure><img alt="Elvenware" src="/charlie/images/elvenwarelogo.png" /></figure>
+<h2>Table of Contents</h2>
+<ul>
+	<li><a href='#androidBasics'>Android Basics</a></li>
+	<li><a href='#android-and-the-cloud'>Android and the Cloud</a></li>
+	<li><a href='#theAndroidEcosystem'>The Android Ecosystem</a></li>
+	<li><a href='#buying-a-device'>Buying a Device</a></li>
+	<li><a href='#theAndroidOpenSourceProject'>The Android Open Source Project</a></li>
+	<li><a href='#codeNames'>Code Names</a></li>
+	<li><a href='#usingAnAndroid'>Using an Android</a></li>
+	<li><a href='#apps'>Apps</a></li>
+	<li><a href='#markets:PlayStoreAndAmazon'>Markets: Play Store and Amazon</a></li>
+	<li><a href='#home-screen-tour'>Home Screen Tour</a></li>
+	<li><a href='#notifications'>Notifications</a></li>
+	<li><a href='#galaxy-s4-notification-icons'>Galaxy S4 Notification Icons</a></li>
+	<li><a href='#theActionBar'>The Action Bar</a></li>
+	<li><a href='#contacts'>Contacts</a></li>
+	<li><a href='#app-drawer'>App Drawer</a></li>
+	<li><a href='#status'>Status</a></li>
+	<li><a href='#settings'>Settings</a></li>
+	<li><a href='#change-the-device-name'>Change the Device Name</a></li>
+	<li><a href='#holographicView'>Holographic View</a></li>
+	<li><a href='#powerAndScreen'>Power and Screen</a></li>
+	<li><a href='#sd-cards-and-sim-cards'>SD Cards and SIM Cards</a></li>
+	<li><a href='#connectingAndroidToAPC'>Connecting Android to a PC</a></li>
+	<li><a href='#airDroid'>AirDroid</a></li>
+	<li><a href='#androidConnect'>Android Connect</a></li>
+	<li><a href='#es-file-explorer'>ES File Explorer</a></li>
+	<li><a href='#dlna-and-wifidirect'>DLNA and WifiDirect</a></li>
+	<li><a href='#dlna-and-music'>DLNA and Music</a></li>
+	<li><a href='#keyboardsAndText'>Keyboards and Text</a></li>
+	<li><a href='#universal-search'>Universal Search</a></li>
+	<li><a href='#voice'>Voice</a></li>
+	<li><a href='#voiceCommands'>Voice Commands</a></li>
+	<li><a href='#assistant'>Assistant</a></li>
+	<li><a href='#theGoogleAccount'>The Google Account</a></li>
+	<li><a href='#sms-messages'>SMS Messages</a></li>
+	<li><a href='#wi-fi'>Wi-Fi</a></li>
+	<li><a href='#gps'>GPS</a></li>
+	<li><a href='#sound'>Sound</a></li>
+	<li><a href='#screen-rotation'>Screen Rotation</a></li>
+	<li><a href='#bluetooth'>Bluetooth</a></li>
+	<li><a href='#mobile-data'>Mobile Data</a></li>
+	<li><a href='#blocking-mode'>Blocking Mode</a></li>
+	<li><a href='#power-saving'>Power Saving</a></li>
+	<li><a href='#screen-mirroring'>Screen Mirroring</a></li>
+	<li><a href='#multi-window'>Multi-Window</a></li>
+	<li><a href='#s-beam'>S-Beam</a></li>
+	<li><a href='#nfc'>NFC</a></li>
+	<li><a href='#air-view'>Air View</a></li>
+	<li><a href='#air-gesture'>Air Gesture</a></li>
+	<li><a href='#driving-mode'>Driving Mode</a></li>
+	<li><a href='#smart-stay'>Smart Stay</a></li>
+	<li><a href='#smart-scroll'>Smart Scroll</a></li>
+	<li><a href='#sync'>Sync</a></li>
+	<li><a href='#airplane-mode'>Airplane Mode</a></li>
+	<li><a href='#smart-pause'>Smart Pause</a></li>
+</ul>
+<h1 id="androidBasics">Android Basics</h1>
+<p><a href="http://www.android.com/about/">Android</a> is an open source operating system developed by Google. It appears most frequently on phones and tablets, but can be run on a range of devices from net books, to laptops and even on PCs.</p>
+<p><strong>NOTE:</strong> The information found on this page is Android specific. If you need a general introduction to mobile devices, see these pages:</p>
+<ul>
+<li><a href="index.html">TOC</a></li>
+<li><a href="MobileDevices.html">MobileDevices</a></li>
+<li><a href="PeopleCentered.html">PeopleCentered</a></li>
+</ul>
+<h2 id="android-and-the-cloud">Android and the Cloud</h2>
+<p>Suppose you wanted to know about Bill Gates, and what he is thinking this year, month, week or even today. One way to start doing that would be to follow his presence on the web. You would want to know the name of his Twitter Account, his Facebook account, his blog, his web site, etc. Here is a start:</p>
+<ul>
+<li><a href="https://twitter.com/BillGates">https://twitter.com/BillGates</a></li>
+<li><a href="https://www.facebook.com/BillGates">https://www.facebook.com/BillGates</a></li>
+<li><a href="http://www.gatesnotes.com/globalpages/bio">http://www.gatesnotes.com/globalpages/bio</a></li>
+</ul>
+<p>Bill is a very experienced man, and he has a lot of help from a good staff. As a result, his online presence looks and feels very professional. We can't reach those same heights, but we can start to leave a footprint in the cloud. One step is to have a list of important links to your presence in the cloud, much like the three links shown above.</p>
+<p>Besides the kind of public links shown above, you should also establish a private, non-public presence in the cloud on places like Google Drive, OneDrive and Evernote. I'm sure that Bill also keeps a great deal of information on OneDrive.</p>
+<p>The point is that we can access all of these services, both public and private, from a PC, a laptop, a tablet or a phone. This is what mobile computing looks like. For most of us, a phone alone is not enough. We need to share information across devices. We need to access and create our data on our phones, tablets, laptops and PCs.</p>
+<p>We all, myself included, still have a lot to learn to understand what it means to effectively use a mobile device, and to participate in the cloud infrastructure that makes mobile devices so useful. However, the first steps are two fold:</p>
+<ol type="1">
+<li>Establish a presence in the cloud. Get accounts on the major hubs, and learn how to visit the sites of other people who are important to you.</li>
+<li>Learn how to communicate in the cloud. How can we use the cloud to communicate and learn without compromising our privacy, our professional image, and our basic human dignity? The answer to that question is really a matter of style, or perhaps it is even an ethical matter. What kind of image do we want to present to the online world? How can we use the cloud and its mobile presence to enhance our professional and personal lives without compromising who we are and what we want to achieve?</li>
+</ol>
+<p>Does that help you understand better what it is I want? I just want a list of your toeholds in the cloud. Some are primarily public such as Twitter and Google Sites, and some are primarily private, such as Google Drive or Evernote. (Though collaboration or even document sharing is an important part of what Google, Evernote and OneDrive can do for us.) But public or private, these tools are all important to us. A mobile device that is not connected to the cloud is not really, in my opinion, very useful under most circumstances.</p>
+<h2 id="theAndroidEcosystem">The Android Ecosystem</h2>
+<p>There are hundreds of Android devices available in over 100 countries. They ship over 1.3 million devices activated each day. Two years ago it was 60,000 a day, so it is growing very quickly. In over 169 countries there some 300 carriers providing online experience for Android users. In 2011, there had been about 100 million Android devices activated. As of Sept 12, 2012 there have been about 500 million Android Activations. (Compare to about 400 million iOS devices activated. There are about 600,000 applications available for the Android platform and about 20 million applications have been downloaded.</p>
+<p>Android is built on top of Linux. Android development is typically done in Java, using the Eclipse IDE in conjunction with the Android SDK and run on the Android’s <a href="http://en.wikipedia.org/wiki/Dalvik_(software)">Dalvik</a> virtual machine.</p>
+<p>Android is developed by a team at Google. Get to know that team. Read their blogs, watch their videos.</p>
+<h2 id="buying-a-device">Buying a Device</h2>
+<p>The first consideration is whether consideration is whether to go with Android, iOS or Windows. There are two things to think about in this regard.</p>
+<p>1). Have you already bought into a particular platform? If you are a Windows or iOS fanatic, then stick with your platform. 2). Choose the most common platform. In this regard, Android is the huge winner. They own by far the biggest market share. (Don't get confused by iPhone argument that it is the single most popular phone. Sure, maybe that is true. Perhaps it is true. But Apple only has one device: the iPhone. There are hundreds of Android phones. Put all the Android phones together, and they have well over 50% of the market. iPhone has something like 20% of the market.</p>
+<p>Once you have settled on your platform, then you need to decide if you want a phone or a tablet. That is a fairly simple decision. There is no best choice, but you probably know which you want without being told.</p>
+<p>This is where things start to get complicated. Each device is different, and it is not easy to understand what features any particular device might have. Things to consider:</p>
+<ul>
+<li>Screen resolution</li>
+<li>Screen size</li>
+<li>CPU speed</li>
+<li>Amount of RAM</li>
+<li>Number of sensors</li>
+<li>Number of hardware connections: USB, SD Card, HDMI, etc</li>
+<li>What version of the OS does the device run, and it will be able to get updates</li>
+<li>Does it have a keyboard and if so does that matter to you?</li>
+</ul>
+<p>There are other even more nebulous considerations, such as ease of use and design.</p>
+<p>This course, is, to some degree, designed to help you understand how to make decisions based on all these criteria. If you want to get started right now, and you don't have the patience to learn more, then consider the following recommendations:</p>
+<ul>
+<li>Search on strings such <strong>android best device</strong>, or <strong>android best phone</strong>, or <strong>android best tablet</strong>. Sort through the results</li>
+<li>Make sure you get a device with a recent version of the OS. At this writing, that means getting a device that supports JellyBean, but soon KitKat will be the most recent OS.</li>
+<li>Consider just making the plunge. Okay, you may be stuck with whatever choice you make for up to two years. But you are better off with just an okay device than with no device. You'll learn more through experience, even painful experience, than you will be doing nothing.</li>
+</ul>
+<h2 id="theAndroidOpenSourceProject">The Android Open Source Project</h2>
+<p>Google created a program called <a href="http://source.android.com/">AOSP</a> to manage the development of the Android OS. This open source project produces releases once every six to nine months.</p>
+<p>Many different carriers use the Android OS, which means that the same applications will run on a Google, Samsung, HTC, Archos, Asus or LG device. Android Compatibility Definition helps ensure that a common platform is available across a range of devices.</p>
+<h2 id="codeNames">Code Names</h2>
+<p>Android code names are alphabetical, and they are named after desserts, beginning with C for Cupcake. G is for Gingerbread, H is for honeycomb, I is for Ice Cream, and so on. So you don't really need to know the names, just the alphabet.</p>
+<p>Honeycomb was the first Android release designed for tablets. There were tablets released with pre-Honeycomb versions of Android, but it was strictly for mature audiences; it was not something that you would want to give to a child or anyone with sensitive nature.</p>
+<ul>
+<li>Astro: (1.0)</li>
+<li>Blender: (1.1)</li>
+<li>Cupcake (1.5)</li>
+<li>Donut (1.6)</li>
+<li>Éclair (2.0)</li>
+<li>Froyo (2.2)</li>
+<li><a href="http://developer.android.com/about/versions/android-2.3-highlights.html">Gingerbread (2.3)</a></li>
+<li><a href="http://developer.android.com/about/versions/android-3.0-highlights.html">Honeycomb (3.0)</a></li>
+<li><a href="http://developer.android.com/about/versions/android-4.0-highlights.html">Ice Cream Sandwich (4.0)</a></li>
+<li><a href="http://developer.android.com/about/versions/jelly-bean.html">Jelly Bean (4.1, 4.2, 4.3)</a></li>
+<li><a href="http://kitkat.com/home">KitKat</a> (4.4)</li>
+</ul>
+<h2 id="usingAnAndroid">Using an Android</h2>
+<p>To begin, you need to learn the major features on the Android screen.</p>
+<p>The home screen is divided into a set of from 5 to 7 panels. You typically only see one panel a time, but each panel is configurable. This is vaguely analgous to the way you can have multiple tabs open in a browser, but typically only see one page a time. Of course, on an Android, each page contains icon or application widgets, while on a browser each page displays a view of a website.</p>
+<figure>
+<img src="images/HomeScreen01Small.png" alt="Description: Description: The home screen" /><figcaption>Description: Description: The home screen</figcaption>
+</figure>
+<p><strong>Figure 00: The home screen on a Galaxy Tab 10.1.</strong></p>
+<p>The home screen can be populated with applications and widgets. You can click an application icon to launch an app, or you can view a widget to see a snapshot of the data available from a particular application. To see the data in an application, you need to launch the app. Widgets reside on the Android desktop, and display data without requiring that you first launch a program.</p>
+<figure>
+<img src="http://www.elvenware.com/charlie/os/Android/images/Widget01Small.png" alt="A widget" /><figcaption>A widget</figcaption>
+</figure>
+<p><strong>Figure 01: You can see the a Weather Widget in this screen shot display information about Redmond.</strong></p>
+<p>Widgets provide views into an application. There are many great widgets you can install that can make your Android easier to use. Two facts to remember:</p>
+<ul>
+<li>They tend to drain power</li>
+<li>This feature is not available on iPhone</li>
+</ul>
+<p>Widgets frequently don't give you anything you can't find on an application, they just make it easier to track an activity.</p>
+<h2 id="apps">Apps</h2>
+<p>Though browser support on Android is constantly improving, Android applications are still often the best way to access information on mobile platforms. You can tap the App Launcher icon in the top right corner of the home screen to bring up the <strong>Apps Tray</strong>.</p>
+<figure>
+<img src="http://www.elvenware.com/charlie/development/cloud/images/AppsTray01Small.png" alt="Description: The Apps Tray" /><figcaption>Description: The Apps Tray</figcaption>
+</figure>
+<p><strong>Figure 0X: The Apps Tray provides you with multiple screens from which you can select the applications you want to use on your application <a href="http://www.elvenware.com/charlie/development/cloud/images/AppsTray01.jpg">FullSize</a>.</strong></p>
+<p>You can then swipe left or right to page through a list of all the applications on your Android. Use the Play Store or a similar tool to add new applications, and go to the Application section of the Settings tool to uninstall applications. You can use the Storage section of the Settings tool to see if you are running out of space in which to install applications.</p>
+<h2 id="markets:PlayStoreAndAmazon">Markets: Play Store and Amazon</h2>
+<p>Just as the Apple Store is a hub of life on an iPhone, the Play Store is a central feature of life on the Android.</p>
+<figure>
+<img src="http://elvenware.com/charlie/os/Android/images/PlayStore01Small.png" alt="The Google Play Store is a major hub on the Amazon platform" /><figcaption>The Google Play Store is a major hub on the Amazon platform</figcaption>
+</figure>
+<p><strong>Figure 0x:The Google Play Store is a major hub on the Amazon platform</strong></p>
+<p>There is, however, serious competition from the Amazon App Store. If you consume music or applications at all, you should probably use both applications.</p>
+<h2 id="home-screen-tour">Home Screen Tour</h2>
+<p>In the bottom of Figure 00 and 01, you can see System Bar. It has a back button, a home button, a multitasking (recent apps) button, and sometimes a menu button or screen shot button. On the right of the system bar you can the notification panel.</p>
+<p><strong>System Bar</strong> - At the bottom</p>
+<ul>
+<li>Always present.</li>
+<li>Navigation on the left. Includes home, recent apps, and back buttons</li>
+<li>Notifications on the right</li>
+</ul>
+<h2 id="notifications">Notifications</h2>
+<p>Tap the clock in the notification panel to see the Control Panel and Access Settings</p>
+<ul>
+<li>Updates</li>
+<li>Alerts</li>
+<li>Battery</li>
+<li>Email</li>
+<li>Time</li>
+<li>Signal Strength</li>
+</ul>
+<h3 id="galaxy-s4-notification-icons">Galaxy S4 Notification Icons</h3>
+<ul>
+<li>3G/4G</li>
+<li>Airplane mode</li>
+<li>Alarm</li>
+<li>Battery</li>
+<li>Bluetooth</li>
+<li>Cell Signal</li>
+<li>Downloading</li>
+<li>Email message</li>
+<li>GPS</li>
+<li>Missed Phone call</li>
+<li>Mobile hotspot</li>
+<li>Roaming</li>
+<li>Scheduled event</li>
+<li>SD Card</li>
+<li>Smart Scroll</li>
+<li>Time</li>
+<li>TTY - Teletypewriter for the deaf</li>
+<li>USB</li>
+<li>Vibrate</li>
+<li>VPN</li>
+<li>Voicemail</li>
+</ul>
+<h2 id="theActionBar">The Action Bar</h2>
+<p>Other items sometimes found on the home screen include an action bar and the app tray.</p>
+<p><strong>Action Bar</strong> - At the top</p>
+<ul>
+<li>Optional</li>
+<li>Menu, search</li>
+</ul>
+<figure>
+<img src="images/ActionBar01Small.png" alt="Description: J:\Web\ElvenDev\charlie\os\Android\images\ActionBar01Small.png" /><figcaption>Description: J:\Web\ElvenDev\charlie\os\Android\images\ActionBar01Small.png</figcaption>
+</figure>
+<p><strong>Figure 02: The Action Bar is visible as a black bar seen at the top of this screen shot of Google Maps on an Android Galaxy Tablet. On the right of the action bar are menu options for configuring Google Maps.</strong></p>
+<h2 id="contacts">Contacts</h2>
+<p>Managing the contacts on your phone can be a challenge, in part because you can end up with contacts from several different sources.</p>
+<p>To get started, make sure you know how to access to your contacts. You can find your contacts on the page of each home page.</p>
+<figure>
+<img src="images/Contacts00.png" alt="Contact Sync0" /><figcaption>Contact Sync0</figcaption>
+</figure>
+<p>The set up differs from machine to machine, but on the Galaxy S4 the bottom five icons on the home screen always stay the same. There may be six pages on your home screen, but the icons will be the same on each pane. They are configurable, but by default you see:</p>
+<ul>
+<li>Phone</li>
+<li>Contacts</li>
+<li>Messaging</li>
+<li>Browser</li>
+<li>Apps</li>
+</ul>
+<p>This seems simple enough, but can actually require a bit of concentration. After all, you don't want to spend time searching for the Messaging or Contacts pages when you have a shortcut to them on the desktop at all times.</p>
+<figure>
+<img src="images/Contacts01.png" alt="Contact Sync1" /><figcaption>Contact Sync1</figcaption>
+</figure>
+<p>Above you can see the contacts app. From this application you can make phone calls, send email, or send a message.</p>
+<figure>
+<img src="images/Contacts02.png" alt="Contact Sync2" /><figcaption>Contact Sync2</figcaption>
+</figure>
+<p>Sometimes it is necessary to make sure you sync your contacts between your device, the cloud and your home machine. You can choose to sync automatically, but if you want to do it manually, then you have to go through certain steps To get to Sync Contacts page shown here, choose:</p>
+<ul>
+<li>Settings</li>
+<li>Accounts</li>
+<li>Click on the account you want to sync</li>
+<li>Click again to bring up the sync screen.</li>
+</ul>
+<figure>
+<img src="images/Contacts03.png" alt="Contact Display" /><figcaption>Contact Display</figcaption>
+</figure>
+<p>It is very useful to filter the contacts that are visible. You can end up with a lot of contacts, but sometimes you have one canonical list that you really care about.</p>
+<h2 id="app-drawer">App Drawer</h2>
+<p>You probably won't have enough real estate on your home screen and its panes to house the icons for all your apps or widgets. Instead, you can click the Launcher icon and go to the App Drawer. On a Galaxy S4, it has 3 pages:</p>
+<ul>
+<li>All applications</li>
+<li>All widgets</li>
+<li>Just the applications you downloaded</li>
+</ul>
+<p>You can launch apps directly from the App Drawer. Alternatively, you can long click and then drag their icons onto the home page or panes.</p>
+<p>Here is one page of the App Drawer. It displays a subset of the applications on my device:</p>
+<figure>
+<img src="images/AppDrawApps.png" alt="a" /><figcaption>a</figcaption>
+</figure>
+<p>Here are the widgets installed on my device:</p>
+<figure>
+<img src="images/AppDrawWidgets.png" alt="b" /><figcaption>b</figcaption>
+</figure>
+<p>Here are the apps that I downloaded explicitly. These are the apps that I downloaded, not those that came installed on the device when I bought it.</p>
+<figure>
+<img src="images/AppDrawDownloads.png" alt="c" /><figcaption>c</figcaption>
+</figure>
+<h2 id="status">Status</h2>
+<p>You can get a detailed update on the status of your phone.</p>
+<ul>
+<li>Settings | More | About Device | Status</li>
+</ul>
+<p><img src="images/PhoneStatus01.png" alt="Phone Status 01" /> <img src="images/PhoneStatus02.png" alt="Phone Status 02" /></p>
+<p>In the images above, I have blocked out a few of the fields in the interest of security. But you should find them all filled out on your device.</p>
+<h2 id="settings">Settings</h2>
+<p>Whether you are using an Apple, Android or Windows device, you are going to have to use the Settings Panel quite often. It is more than worth your while to spend time with it.</p>
+<p>On an Android S4:</p>
+<ul>
+<li>Press the bar at the bottom to go to the home screen</li>
+<li>Tap menu. It brings up a list of items, as shown in the screenshot below.</li>
+<li>Select Settings</li>
+</ul>
+<figure>
+<img src="images/Settings.png" alt="Settings Shortcut" /><figcaption>Settings Shortcut</figcaption>
+</figure>
+<h2 id="change-the-device-name">Change the Device Name</h2>
+<ul>
+<li>Select Settings | More | About Device | Device Name</li>
+<li>Set the device name</li>
+</ul>
+<p>The screen shots below shows how it is done.</p>
+<figure>
+<img src="images/DeviceName.png" alt="Device Name" /><figcaption>Device Name</figcaption>
+</figure>
+<h2 id="holographicView">Holographic View</h2>
+<p>If you select the plus symbol in the upper right hand corner of the home screen you will be taken to “holographic” view, as shown in Figure 02. In the top center third of screen shot below, you can see a representation of all five home screens in a holographic format. Beneath the five screens are a few sample widgets. You can see that widgets display more information, in real time, than you can see in a simple static icon.</p>
+<p><a href="images/Holographic01.jpg"><img src="images/Holographic01Small.png" alt="Description: Description: Holographic View" /></a></p>
+<p><strong>Figure 03: The top middle of the &quot;holographic&quot; view on a Honeycomb table provides an overview of the five home screen pages, and a an assortment of widgets are visible below it.</strong></p>
+<p>Holographic view that allows you to configure the contents found on the five pages of the home screen. Along the top you can see a &quot;3D&quot; view of the five screens of the home page. The bottom contains a view of the items you can use to populate the screens:</p>
+<ul>
+<li>Widgets</li>
+<li>Apps</li>
+<li><p>Wallpapers</p></li>
+<li><p>More (Like Apps, but it might give you a bookmark into an application, or a particular view of your Gmail folder.)</p></li>
+</ul>
+<h2 id="powerAndScreen">Power and Screen</h2>
+<p>You can adjust the font or wallpaper:</p>
+<ul>
+<li><strong>Settings | Screen | Font/Wallpaper</strong></li>
+</ul>
+<p>You can adjust how long the computer stays open before the screen goes black.</p>
+<ul>
+<li><strong>Settings | Screen | Timeout</strong></li>
+</ul>
+<h2 id="sd-cards-and-sim-cards">SD Cards and SIM Cards</h2>
+<p>Are discussed in the <a href="../Computers/Hardware.html#sdCards">hardware page</a></p>
+<h2 id="connectingAndroidToAPC">Connecting Android to a PC</h2>
+<p>There are varies ways to connect an Android to a PC. In this section we cover two of them:</p>
+<ul>
+<li>AirDroid</li>
+<li>Android Connect</li>
+</ul>
+<h3 id="airDroid">AirDroid</h3>
+<p>Helps you manage your Android from your desktop.</p>
+<p><a href="images/AirDroid01.png"><img src="images/AirDroid01Small.png" alt="Description: Description: Description: Description: Airdroid seen in my desktop browser" /></a></p>
+<h3 id="androidConnect">Android Connect</h3>
+<p>After plugging in your Android phone to a PC with a USB cable, open up the Windows Devices and Printers Page. You should see your phone.</p>
+<p>In the Windows Explorer, you should also see two drives. But at first you can't use them. On the phone, pull down the notifications window, that shade you pull from the top. In their you can turn on the devices, and things like transferring files and syncing with Windows Media Player will start to work.</p>
+<h3 id="es-file-explorer">ES File Explorer</h3>
+<p>You can use the <a href="https://play.google.com/store/apps/details?id=com.estrongs.android.pop&amp;hl=en">ES FileExplorer</a> tool to explore the files on your device, and to transfer them to other devices. It is made by a company called <a href="http://www.estrongs.com/">EStrongs</a>.</p>
+<p>Browsing your local files with the ES File Explorer is much as you would expect. The surprise come when you start digging into the application and seeing what else it can do. For instance, you have options to create LAN, Cloud, FTP and Bluetooth connections.</p>
+<figure>
+<img src="images/GalaxyNetwork.png" alt="Galaxy S4 Network" /><figcaption>Galaxy S4 Network</figcaption>
+</figure>
+<p>You have the ability to view many different types of networked connections. The LAN connections are available through a samba server set up on your Android device.</p>
+<p>If you are looking at the local LAN in your home, you might need to understand at least a little about IP addresses. If you look below you can see that three different home computers are on the network.</p>
+<figure>
+<img src="images/GalaxyLan.png" alt="Galaxy S4 Lan" /><figcaption>Galaxy S4 Lan</figcaption>
+</figure>
+<p>To find out which computer is associated with which IP address, you can open up a command window and type ipconfig on Windows, or ifconfig on Linux or the Mac.</p>
+<p>I haven't explored this in much depth yet, but you can make connections to various cloud services with ES Explorer.</p>
+<figure>
+<img src="images/GalaxyCloud.png" alt="Galaxy S4 Cloud" /><figcaption>Galaxy S4 Cloud</figcaption>
+</figure>
+<h3 id="dlna-and-wifidirect">DLNA and WifiDirect</h3>
+<p>You can share the files on your phone via DLNA. In fact, what you are really doing on modern Android devices is using a combination of Wifi Direct and DLNA to share files.</p>
+<p>To get started, take the following steps on your phone:</p>
+<ul>
+<li>Choose <strong>Settings | Connections</strong></li>
+<li>Goto <strong>Nearby Devices</strong> and turn on <strong>File Sharing</strong></li>
+</ul>
+<p>These images show each stage in the process of setting up DLNA sharing on your phone.</p>
+<figure>
+<img src="images/Connections.png" alt="Connections" /><figcaption>Connections</figcaption>
+</figure>
+<p>On the Connections page, click on <strong>Nearby Devices</strong>. Notice that this option is subtitled 'Share your media files via DLNA.' This means that DLNA aware software, such as the Windows Media Player, can be used to connect to the media on your phone.</p>
+<figure>
+<img src="images/NearbyDevices.png" alt="Nearby Devices" /><figcaption>Nearby Devices</figcaption>
+</figure>
+<p>Click on File Sharing. This will turn a bunch of default of services which are detailed in the advanced options shown in the Nearby Devices screen shot. Most of the options are self explanatory. Just iterate through them on your phone, and you should get a good sense of how they work.</p>
+<h2 id="dlna-and-music">DLNA and Music</h2>
+<p>The hardware is in place on many Android devices to do great things with DLNA. However, the software is not usually in place, probably because Samsung or Google want you to buy music or music services from them rather than just let you broadcast music across your home to your devices.</p>
+<p>If you run Windows then your Windows Media Player can act as DLNA server and and a DLNA player. Even better, some routers now come with the ability to act as DLNA servers. This means you can plug in a thumb drive or USB drive into the router, and then serve up music from the router to your mobile devices and your Windows media player.</p>
+<p>To get it working properly on your mobile device, you will probably need to download a piece of software. (The Music app that ships with many mobile devices will let you play DLNA music, but it does a terrible job of it.) Instead, you should download UPNP from Bubbleup, or one of the other popular DLNA players. It will allow your device to act as both a DLNA player and a DLNA server.</p>
+<h2 id="keyboardsAndText">Keyboards and Text</h2>
+<p>Even familiar things like a key board can be an occasion for learning new skills. Instead of using a physical keyboard, on mobile devices we usually use a virtual keyboard that appears on the screen below the text we are creating. These keyboards can be notoriously hard to use, but they do have features that are not included in physical keyboards.</p>
+<p>The new features found on a virtual keyboard include the ability to change the keyboard to conform to the current context. Try typing in a web address in a browser. Notice that in some cases a new key with the letters <strong>www</strong> on it appears automatically. If you press that key, then the letters <strong>www</strong> are typed in all at once, with a single keypress. This can save time. Notice the <strong>com</strong> key. This can become <strong>net</strong>, <strong>gov</strong> or <strong>org</strong> key if you long press the key. To long pres a key, simply hold it down for several seconds. Notice the emoticon key and the setup key.</p>
+<p>Virtual keyboards are flexible. Are they perhaps even better than real keyboards, at least in some cases?</p>
+<p>Explore setup for the keyboard as there may be more options than you think, including voice and predictive typing. To reach setup for the keyboard, choose the <strong>Settings</strong>icon, then choose <strong>Language and Input | Keyboard Settings | Current Input Method.</strong></p>
+<p><a href="images/KeyboardChoice.png"><img src="images/KeyboardChoiceSmall.png" alt="Choosing a keyboard" /></a></p>
+<p><strong>Figure: Choosing a keyboard. (Click to expand).</strong></p>
+<p>Sometimes you will want to get a special key, such as an umlot or some other letter usually associated with foreign languages. To do this, try long pressing the e key or the u key or the emoticon key. You will find options for inserting keys like these: ....</p>
+<p>The Swipe keyboard allows you to trace out the letters you want to type rather than inserting one keypress at a time. The problem with virtual keyboards is detecting when you mean to hit a key, and when you are, for instance, simply resting your fingers on the keyboard. When I am touch typing on a physical keyboard, I leave my fingers in place on the center row whenever I am not using them. If I do that on a virtual keyboard, then I end up entering letters I don't mean to insert. With Swype, you never take your finger off the keyboard, or rather, you only take it off to signal that you are at the end of a word. For instance, to type the word &quot;insert,&quot; I &quot;swipe from the I key to the N key and then to S, E, R and T keys, without ever lifting my finger. This sounds, and is, a bit awkward, but after you practice for a few minutes, you can find it surprisingly effective. Perhaps not ideal, but better than you might expect.</p>
+<p>Swype also benefits from predictive typing, which guesses at the word that you intended to insert. Even if you did not &quot;swipe&quot; exactly the correct letters, the tool can guess at what you meant to type, and insert the word automatically, or give you the chance to choose from a list of suggested words. Again, this sounds awkward, and is in fact awkward at first, but with practice it becomes increasingly easy.</p>
+<p>I didn't used to use Swype that often, but now I use it all the time.</p>
+<p>Add words to the user dictionary when predictive typing is on.</p>
+<p>When using the keyboard, one of the big challenges is getting to the special characters such as the exclamation mark, the pound symbol, the dollar sign, etc. The simplest way is to long press the period key. When you do this, a list of the key symbols appears, as shown in the figure below.</p>
+<figure>
+<img src="images/Keyboards02.png" alt="Symbols" /><figcaption>Symbols</figcaption>
+</figure>
+<p>One of the great comic moments in mobile computing occurs when folks point out that you &quot;need tiny fingers&quot; to use the floating keyboard. As if the regular keyboard on a phone like the Galaxy S4 is not already so tiny as to be all but unusable by people with good, hefty hands. One way to improve this situation is to turn device on its side. Then the keyboard is more manageable.</p>
+<figure>
+<img src="images/Keyboards03.png" alt="Keyboard Landscape" /><figcaption>Keyboard Landscape</figcaption>
+</figure>
+<p>Copy and paste is long press.</p>
+<h2 id="universal-search">Universal Search</h2>
+<p>On you home page, there is a Google Search box. If you type a query into that box, you will get results from both your phone, and from your device.</p>
+<p>In this screen shot, I have typed in the word Ghost, and you can see that I get result from the music library on my phone.</p>
+<figure>
+<img src="images/Search01.png" alt="Search for Ghost on local machine" /><figcaption>Search for Ghost on local machine</figcaption>
+</figure>
+<p>If I hit return, I see the results.</p>
+<figure>
+<img src="images/Search02.png" alt="Search with bar at bottom" /><figcaption>Search with bar at bottom</figcaption>
+</figure>
+<p>Notice at the bottom of the screen, the gray bar, which says that I searched on my phone. That bar can be slid to the right or the left in order to select other domains to search. If, for instance, I elect to search images, then I am taken online, and a search is made of images on the Internet related to the word ghost.</p>
+<figure>
+<img src="images/Search03.png" alt="Search for ghost images" /><figcaption>Search for ghost images</figcaption>
+</figure>
+<p>Note the when you search Google on a PC, you end up with similar list of options along the top of the screen. Here for instance, we have the option to search the Web, Images, Shopping, and more which are hidden off screen.</p>
+<figure>
+<img src="images/Search04.png" alt="Search on PC" /><figcaption>Search on PC</figcaption>
+</figure>
+<h2 id="voice">Voice</h2>
+<p>There are two commonly used tools for giving voice commands to your phone. This is a valuable bit of functionality, as many people find the keyboard on a phone hard to use, and there are times when it will be nearly impossible to use.</p>
+<p>When you are using voice to enter text into an editor, you usually just tap the microphone icon on the keyboard once. However, if you hold down the microphone key, a dialog appears offering you several options.</p>
+<p><a href="images/Voice01.png">Voice Input Options</a></p>
+<p>The options above are:</p>
+<ol type="1">
+<li>Microphone</li>
+<li>Handwriting Recognition</li>
+<li>Clipboard</li>
+<li>Text Recognition</li>
+<li>Settings</li>
+<li>Keyboard Docked</li>
+<li>Keyboard Float</li>
+</ol>
+<h3 id="voiceCommands">Voice Commands</h3>
+<p>You can use Google Voice when you run the search command. It is also available as an option from most of the virtual keyboards.</p>
+<ul>
+<li>send text to (person)</li>
+<li>listen to (music)</li>
+<li>set alarm</li>
+<li>navigate to (place)</li>
+<li>call (person or business)</li>
+<li>send email to (person)</li>
+<li>map of (city or town)</li>
+<li>go to (website)</li>
+<li>note to self (message): This sends an email to me with some message that I dictated. You can also send messages to friends or other contacts.</li>
+</ul>
+<h3 id="assistant">Assistant</h3>
+<p>This is a third party tool, but it is much more sophisticated than the voice commands built into Google Search and found on the keyboards. It is more comparable to what Apple users find with Siri.</p>
+<h3 id="theGoogleAccount">The Google Account</h3>
+<p>Your experience in an Android device is greatly enhanced if you sign in to your Google Account. This is, in my opinion, an essential and valuable part of your Android device. Of course, Google can, and undoubtedly will, use some of the information they garner from your connection to their servers. I personally don’t think this is a serious risk, but each person needs to make up their own mind about these issues.</p>
+<p>If you want to read more about how Google users your data, see their Privacy statement:</p>
+<p><a href="https://www.google.com/intl/en/policies/">https://www.google.com/intl/en/policies/</a></p>
+<h3 id="sms-messages">SMS Messages</h3>
+<p>When you are sending a message, you can press the menu key to a list of options that you can insert into your message.</p>
+<figure>
+<img src="images/Messaging01.png" alt="Scroll to see more Message Options" /><figcaption>Scroll to see more Message Options</figcaption>
+</figure>
+<p>The Smiley menu option provides you with a nice dictionary of symbols.</p>
+<figure>
+<img src="images/Smiley01.png" alt="Insert a smiley" /><figcaption>Insert a smiley</figcaption>
+</figure>
+<p>When you choose the Add Text option, you find that you get a fairly rich range of options.</p>
+<figure>
+<img src="images/Messaging02.png" alt="Add Text to a Message" /><figcaption>Add Text to a Message</figcaption>
+</figure>
+<p>After bringing up Google Maps, the Add Location option inserts an address into your message. The next two images show the sequence. The first shows making the selection in Google Maps. When you are ready, select the Done button. The second option image shows the result.</p>
+<figure>
+<img src="images/Messaging04.png" alt="Select a location" /><figcaption>Select a location</figcaption>
+</figure>
+<figure>
+<img src="images/Messaging03.png" alt="The inserted text" /><figcaption>The inserted text</figcaption>
+</figure>
+<h2 id="wi-fi">Wi-Fi</h2>
+<h2 id="gps">GPS</h2>
+<h2 id="sound">Sound</h2>
+<h2 id="screen-rotation">Screen Rotation</h2>
+<h2 id="bluetooth">Bluetooth</h2>
+<p>You can use Bluetooth to send files from your PC to your Phone, and vice versa. It is hard to beat Airdroid when you have some heavy lifting to do in terms of file transfers. But if you just want to move a file back and forth quickly, Bluetooth is great. There are, however, some Bluetooth file transfer apps for Android.</p>
+<p>Let's connect our PC to Phone using Bluetooth. On laptops, you can more or less count on Bluetooth being built in. On a PC, you frequently need to add Bluetooth. Sometimes you will find that you have a mouse or other device that comes with a bluetooth USB dongle. just plug it in, and an icon should show up in the notification area at the bottom right of your desktop. If you don't have such dongle, try Amazon or EBay or some such, and you should be able to buy one cheaply. I've never actually bought one, as I just seem to have a couple laying around. But when I went on Amazon, and searched on &quot;Bluetooth usb adapter&quot;, I saw several options for under $15, and as low as $2.00. The same search turned up similar options on EBay.</p>
+<p>After plugging in the dongle, right click on the notification icon, and go to settings. Here you can optionally elect to make your computer discoverable. Alternatively, you can make you phone discoverable, and then right click on notification icon and choose add bluetooth device. To make your phone discoverable:</p>
+<ul>
+<li>Settings | Connections | Bluetooth</li>
+<li>Click the icon next to your device to make it discoverable</li>
+<li>If you want to search for your PC from your phone, select the scan bar at the bottom of the screen.</li>
+</ul>
+<p>Whether you connect from your PC to your Phone, or from your Phone to your PC, you will be prompted to enter or confirm a string of digits. If the numbers on the PC and the Phone match, then the connection should be established. Now your Phone and your PC are &quot;paired.&quot;</p>
+<figure>
+<img src="images/BluetoothPaired.png" alt="Bluetooth Pairing" /><figcaption>Bluetooth Pairing</figcaption>
+</figure>
+<p>In the image shown above, my phone has a checkmark next to it. The number 1.56 appears in paranthesis beneath it. This means that my phone will be visible to anyone scanning for it for a total 1 minute and 56 seconds. The number will count down until it reaches zero.</p>
+<p>In the same screen shot, note that I have already paired two PCs. The first is my home PC, which is called Shanti-Tree. The second is my laptop, which is called MountainStreams. On my PC, I can now right click on a file, and choose Send To | Bluetooth. On my Phone, I can choose a file, and choose to share it with a Bluetooth device. In either case, the file will be transferred. Note that the transfer needs to be confirmed on both the Phone and the PC. In other words, when you try to send the file to your PC, the PC needs to actively decide to receive the file. This means that Windows will pop up a dialog asking if it is OK to receive the file. Note that you can put your PC in &quot;receive&quot; mode by right clicking on the Bluetooth notification icon and choosing &quot;receive a file.&quot;</p>
+<p>Finally, please remember that Bluetooth can be a security risk if you get careless. Don't connect to devices in public places unless you are sure you know what you are doing. That means, don't do it unless you have learned a lot more about this subject than I have covered here. Even at home, after connecting to a device, turn off the checkbox that makes your Bluetooth phone or PC visible to other devices. If that option is turned off, you are relatively safe. The only way to be safer is to turn off Bluetooth altogether, and even that still leaves open the possibility that you will turn it on again by mistake. On your PC, you can unplug your dongle, which makes you quite safe indeed, but then again, it's not your PC, which is safe in your house, that is usually at greatest risk.</p>
+<p>Is Bluetooth too dangerous to use? No, that type off talk is usually started by people who want you to use some other protocol that will help them earn a living. Bluetooth is safe, so long as you don't make it easy for devices to connect to your computer or device.</p>
+<p>I've been using <strong>Blueooth File Transfer</strong> by <a href="http://www.medieval.it/blueftp-android/menu-id-68.html">Medieval-Software</a>, which is in the Android store. This allows me to send multiple files at once to my PC.</p>
+<p>When reading about this subject, you may encounter the words OBEX-FTP. OBEX is an abbreviation for Object Exchange. It was originally designed for Infared devices, but has been adopted for use on Bluetooth. It has been compared to HTTP.</p>
+<p>I don't fully understand what OBEX-FTP is, but it seems to have something to do with transferring files over Bluetooth using the FTP protocol. So perhaps it is simply FTP over Bluetooth; that is, it is simply a Bluetooth centric implementation of the FTP protocol. FTP is normally built on top of TCP/IP, but this is built on top of Bluetooth.</p>
+<h2 id="mobile-data">Mobile Data</h2>
+<h2 id="blocking-mode">Blocking Mode</h2>
+<p>Allows you to block, at certain times, or always, things like:</p>
+<ul>
+<li>Incoming Calls</li>
+<li>Notifications</li>
+<li>Alarms and Timers</li>
+<li>And you can disable the LED indicator.</li>
+</ul>
+<h2 id="power-saving">Power Saving</h2>
+<h2 id="screen-mirroring">Screen Mirroring</h2>
+<p>This can be set up easily to specific Samsung TVs, or you can connect to other devices with $100 Samsung AllShare Cast dongle.</p>
+<h2 id="multi-window">Multi-Window</h2>
+<p>We don't have a lot of screen real estate on a phone. Nonetheless, it is possible to open two windows at once. We do this using a technique similar to that used in Windows 8: there are no overlapping windows. Instead, we have one window open at the top half of the screen, and second window open beneath it. There is a bar between the two windows that can be dragged back and forth to change the relative size of the two windows.</p>
+<ul>
+<li>Turn on Multi-Window</li>
+<li>Settings | Display | Multi-Window</li>
+<li>A little half moon icon will appear at the edge of your phone</li>
+<li>Tap the icon to expand it. Now hold and drag to position one or more apps</li>
+</ul>
+<p>Below you can see two screen shots of Multi-Window in action. The top half of the screen is dedicated to gMail, the bottom have to EverNote.</p>
+<p><img src="images/MultiWindow01.png" alt="The half moon icon" /> <img src="images/MultiWindow02.png" alt="The expanded icon" /></p>
+<h2 id="s-beam">S-Beam</h2>
+<h2 id="nfc">NFC</h2>
+<h2 id="air-view">Air View</h2>
+<h2 id="air-gesture">Air Gesture</h2>
+<p><strong>Air Browse</strong></p>
+<p>You can browse through pictures in the Gallery and other items without touching the screen. Just wave your hand over the screen.</p>
+<p><strong>Direct Call</strong>:</p>
+<ul>
+<li>When looking at a contact, just put the screen to your ear, and it will make the call.</li>
+<li>Settings | My Device | Motions and Gestures | Motion | Direct Call</li>
+</ul>
+<p><strong>Palm Motion</strong></p>
+<ul>
+<li>Take screen shot by sliding the edge of your palm over the screen</li>
+<li>Silence Phone by cupping your hand over it.</li>
+</ul>
+<h2 id="driving-mode">Driving Mode</h2>
+<h2 id="smart-stay">Smart Stay</h2>
+<h2 id="smart-scroll">Smart Scroll</h2>
+<h2 id="sync">Sync</h2>
+<h2 id="airplane-mode">Airplane Mode</h2>
+<h2 id="smart-pause">Smart Pause</h2>
+<!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>        
+		<p>Copyright &copy; <a href="/charlie/index.html">Charlie Calvert</a> |
+		<a href="/charlie/contents.html">Site Overview</a> |
+		<a href="/charlie/development/index.html">Writing Code</a> |
+		<a href="/charlie/development/web/index.html">Web</a> |
+		<a href="/charlie/development/web/JavaScript/index.html">JavaScript</a> |
+		<a href="/charlie/books/index.html">My Books</a> </p>
+
+      </footer>
+
+    </div><!-- /.container -->
+</body>
+</html>
+
+
+
